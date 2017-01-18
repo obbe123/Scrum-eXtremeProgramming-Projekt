@@ -21,6 +21,7 @@ public class StudentActions extends javax.swing.JFrame {
     */
     
     InfDB db; //Deklarerar ett databas-fält.
+    private int hej;
 
     public StudentActions() { //Konstruktorn initialiserar databas-fältet genom att be Database-klassen att skicka tillbaks ett sådant objekt.
         initComponents();
