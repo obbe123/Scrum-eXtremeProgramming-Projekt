@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class Database {
 
-    public Connection getDB() {
+    public static Connection getDB() {
         String filePath = "";
         try {
             File currentDirectory = new File("");
