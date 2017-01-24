@@ -8,6 +8,7 @@ package grupp1;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.io.File;
 
 /**
  *
@@ -16,9 +17,12 @@ import java.sql.SQLException;
 public class Database {
 
     public static void getDB() {
+        String filePath = "";
         try {
-            String host = "jdbc:derby://localhost:1527/gruppDB2";  //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
-            String uName = "APP";                                          //gör dock en ny databas? weird... måste testas.
+            File currentDirectory = new File("");
+            filePath = currentDirectory.getAbsolutePath() + "\\GruppDB2";
+            String host = "jdbc:derby://localhost:1527/" + filePath;         //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
+            String uName = "APP";                                           //gör dock en ny databas? weird... måste testas.
             String uPass = "masterkey";
             Connection con = DriverManager.getConnection(host, uName, uPass);
         } catch (SQLException error) {
