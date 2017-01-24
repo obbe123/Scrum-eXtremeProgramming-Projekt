@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package GUI;
-import java.util.ArrayList;
+
+import java.sql.*;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class HemGUI extends javax.swing.JFrame {
 
     private int hej;
-    
+
     public HemGUI() {
         initComponents();
     }
@@ -54,6 +55,11 @@ public class HemGUI extends javax.swing.JFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Profil");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -149,11 +155,31 @@ public class HemGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        try {
+            String host = "jdbc:derby://localhost:1527/gruppDB2";  //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
+            String uName = "APP";                                          //gör dock en ny databas? weird... måste testas.
+            String uPass = "masterkey";
+            Connection con = DriverManager.getConnection(host, uName, uPass);
+
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM namn";
+            ResultSet rs = stmt.executeQuery(sql);
+            String p = "";
+            
+            while (rs.next()) {
+                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
+                jTextArea1.setText(p);
+            }
+        } catch (SQLException error) {
+            System.out.println(error.getMessage());
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
