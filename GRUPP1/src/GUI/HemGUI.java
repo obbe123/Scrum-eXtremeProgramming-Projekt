@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package GUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,9 +12,8 @@ package GUI;
  */
 public class HemGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HemGUI
-     */
+    private int hej;
+    
     public HemGUI() {
         initComponents();
     }
