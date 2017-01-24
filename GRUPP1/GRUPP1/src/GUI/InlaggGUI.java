@@ -41,6 +41,8 @@ public class InlaggGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +53,8 @@ public class InlaggGUI extends javax.swing.JFrame {
         jButton2.setText("jButton2");
 
         larareInfoPanel.setLayout(new java.awt.CardLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton3.setText("jButton3");
 
@@ -72,6 +76,8 @@ public class InlaggGUI extends javax.swing.JFrame {
         );
 
         larareInfoPanel.add(jPanel3, "card2");
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton4.setText("jButton4");
 
@@ -103,7 +109,7 @@ public class InlaggGUI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(larareInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
         );
@@ -129,7 +135,7 @@ public class InlaggGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 CardLayout cardLayout = (CardLayout) larareInfoPanel.getLayout();
-cardLayout.show(larareInfoPanel, "card2");
+cardLayout.show(larareInfoPanel, "card3");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

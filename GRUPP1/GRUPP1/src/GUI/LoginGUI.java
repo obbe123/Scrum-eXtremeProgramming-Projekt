@@ -109,7 +109,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        InlaggGUI hem = new InlaggGUI();
+        HemGUI hem = new HemGUI();
         hem.setVisible(true);
         hem.setLocationRelativeTo(null);
         dispose();
