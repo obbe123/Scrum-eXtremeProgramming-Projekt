@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class Database {
 
-    public static void getDB() {
+    public Connection getDB() {
         String filePath = "";
         try {
             File currentDirectory = new File("");
@@ -25,8 +25,10 @@ public class Database {
             String uName = "APP";                                           //gör dock en ny databas? weird... måste testas.
             String uPass = "masterkey";
             Connection con = DriverManager.getConnection(host, uName, uPass);
+            return con;
         } catch (SQLException error) {
             System.out.println(error.getMessage());
+            return null;
         }
     }
 }
