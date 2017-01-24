@@ -10,5 +10,7 @@ package grupp1;
  * @author Nötfärs
  */
 public class Inlogg {
-    
-}
+ public Inlogg(){
+ }
+ }   
+
