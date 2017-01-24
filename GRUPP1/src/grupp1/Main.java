@@ -5,7 +5,7 @@
  */
 package grupp1;
 
-import GUI.Login;
+import GUI.LoginGUI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
