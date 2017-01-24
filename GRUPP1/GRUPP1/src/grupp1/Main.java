@@ -5,12 +5,16 @@
  */
 package grupp1;
 
+<<<<<<< HEAD:GRUPP1/GRUPP1/src/grupp1/Main.java
 
+=======
+import GUI.LoginGUI;
+>>>>>>> origin/master:GRUPP1/src/grupp1/Main.java
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import java.util.ArrayList;
 /**
  *
  * @author Sapporun
@@ -19,7 +23,7 @@ public class Main {
 
     public static void main(String[] args) {
             Database.getDB();
-            Login login1 = new Login();
+            LoginGUI login1 = new LoginGUI();
             login1.setVisible(true);
             login1.setLocationRelativeTo(null);
     }

@@ -17,7 +17,11 @@ public class Database {
 
     public static void getDB() {
         try {
+<<<<<<< HEAD:GRUPP1/GRUPP1/src/grupp1/Database.java
             String host = "jdbc:derby://localhost:1527/gruppDB";
+=======
+            String host = "jdbc:derby://localhost:1527/gruppDB;create=true";
+>>>>>>> origin/master:GRUPP1/src/grupp1/Database.java
             String uName = "master";
             String uPass = "masterkey";
             Connection con = DriverManager.getConnection(host, uName, uPass);
