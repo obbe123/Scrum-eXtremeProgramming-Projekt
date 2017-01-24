@@ -17,8 +17,8 @@ public class Database {
 
     public static void getDB() {
         try {
-            String host = "jdbc:derby:gruppDB;create=true";
-            String uName = "master";
+            String host = "jdbc:derby://localhost:1527/gruppDB;create=true";  //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
+            String uName = "master";                                          //gör dock en ny databas? weird... måste testas.
             String uPass = "masterkey";
             Connection con = DriverManager.getConnection(host, uName, uPass);
         } catch (SQLException error) {
