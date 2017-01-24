@@ -18,6 +18,9 @@ public class Main {
 
     public static void main(String[] args) {
             Database.getDB();
+            Login login1 = new Login();
+            login1.setVisible(true);
+            login1.setLocationRelativeTo(null);
     }
 
 }
