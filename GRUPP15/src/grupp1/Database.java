@@ -21,7 +21,7 @@ public class Database {
         try {
             File currentDirectory = new File("");
             filePath = currentDirectory.getAbsolutePath() + "\\GruppDB2";
-            String host = "jdbc:derby://localhost:1527/" + filePath;         //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
+            String host = "jdbc:derby:" + filePath;         //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
             String uName = "APP";                                           //gör dock en ny databas? weird... måste testas.
             String uPass = "masterkey";
             Connection con = DriverManager.getConnection(host, uName, uPass);
