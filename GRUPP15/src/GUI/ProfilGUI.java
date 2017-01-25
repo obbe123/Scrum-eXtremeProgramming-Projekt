@@ -33,9 +33,11 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblEpost = new javax.swing.JLabel();
         lblTelefon = new javax.swing.JLabel();
         lblRum = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblBild = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(java.awt.Color.black);
 
         lblNamn.setText("Förnamn Efternamn");
 
@@ -55,7 +57,7 @@ public class ProfilGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(lblBild, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEpost)
@@ -83,16 +85,17 @@ public class ProfilGUI extends javax.swing.JFrame {
                         .addComponent(lblTelefon)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblRum))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblBild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblBild;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOrganisation;
