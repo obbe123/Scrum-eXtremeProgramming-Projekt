@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package grupp1;
-int i = 1;
+
 import GUI.LoginGUI;
 import java.sql.Connection;
 import java.sql.DriverManager;
