@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -33,5 +35,17 @@ public class Database {
             System.out.println(error.getMessage());
             return null;
         }
+    }
+    public static ResultSet sqlFraga (String fragan){
+        try{
+        Connection con = Database.getDB();
+        Statement stmt = con.createStatement();            
+        ResultSet rs = stmt.executeQuery(fragan);   
+        return rs;
+        }
+        catch (Exception e){
+            return null;
+        }
+        
     }
 }
