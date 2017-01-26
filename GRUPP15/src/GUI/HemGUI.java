@@ -15,7 +15,7 @@ import java.sql.*;
  */
 public class HemGUI extends javax.swing.JFrame {
 
-    
+    private int hej;
 
     public HemGUI() {
         initComponents();
