@@ -4,7 +4,7 @@ package grupp1;
 
 
 public class Person {
-    private String lul;
+    
     private String fNamn;
     private String eNamn;
     private int telefon;
