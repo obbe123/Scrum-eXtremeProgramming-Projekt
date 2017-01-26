@@ -17,12 +17,16 @@ import java.io.File;
 public class Database {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     public int test7;
 =======
     public int test4;
 >>>>>>> refs/remotes/origin/master
 =======
     public int test8;
+>>>>>>> origin/Fridas2
+=======
+    public int test7;
 >>>>>>> origin/Fridas2
 
     public static Connection getDB() {
