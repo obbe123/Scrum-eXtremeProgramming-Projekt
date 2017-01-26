@@ -111,7 +111,7 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Person inloggadPerson = new Person("Uno","Master",1337,"T","unomaster1337@oru.se","lul");
+        Person inloggadPerson = new Person("Peter","Karlsson",1337,"T","unomaster1337@oru.se","Github Master");
         HemGUI hem = new HemGUI(inloggadPerson);
         hem.setVisible(true);
         hem.setLocationRelativeTo(null);
