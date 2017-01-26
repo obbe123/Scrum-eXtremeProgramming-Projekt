@@ -27,22 +27,134 @@ public class ProfilGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pBild = new javax.swing.JPanel();
+        pBeskrivning = new javax.swing.JPanel();
+        pInformation = new javax.swing.JPanel();
+        lblOrganisation = new javax.swing.JLabel();
+        lblTitel = new javax.swing.JLabel();
+        lblTelefon = new javax.swing.JLabel();
+        lblEpost = new javax.swing.JLabel();
+        lblRum = new javax.swing.JLabel();
+        lblNamn = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(525, 430));
+
+        pBild.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pBildLayout = new javax.swing.GroupLayout(pBild);
+        pBild.setLayout(pBildLayout);
+        pBildLayout.setHorizontalGroup(
+            pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 117, Short.MAX_VALUE)
+        );
+        pBildLayout.setVerticalGroup(
+            pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
+        );
+
+        pBeskrivning.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pBeskrivningLayout = new javax.swing.GroupLayout(pBeskrivning);
+        pBeskrivning.setLayout(pBeskrivningLayout);
+        pBeskrivningLayout.setHorizontalGroup(
+            pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 370, Short.MAX_VALUE)
+        );
+        pBeskrivningLayout.setVerticalGroup(
+            pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        pInformation.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblOrganisation.setText("Organisation:");
+
+        lblTitel.setText("Titel:");
+
+        lblTelefon.setText("Telefon:");
+
+        lblEpost.setText("E-post:");
+
+        lblRum.setText("Rum:");
+
+        javax.swing.GroupLayout pInformationLayout = new javax.swing.GroupLayout(pInformation);
+        pInformation.setLayout(pInformationLayout);
+        pInformationLayout.setHorizontalGroup(
+            pInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblOrganisation)
+                    .addComponent(lblTitel)
+                    .addComponent(lblTelefon)
+                    .addComponent(lblEpost)
+                    .addComponent(lblRum))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pInformationLayout.setVerticalGroup(
+            pInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInformationLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblOrganisation)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTitel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTelefon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEpost)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblRum)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        lblNamn.setText("Förnamn Efternamn");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblNamn)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblNamn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblEpost;
+    private javax.swing.JLabel lblNamn;
+    private javax.swing.JLabel lblOrganisation;
+    private javax.swing.JLabel lblRum;
+    private javax.swing.JLabel lblTelefon;
+    private javax.swing.JLabel lblTitel;
+    private javax.swing.JPanel pBeskrivning;
+    private javax.swing.JPanel pBild;
+    private javax.swing.JPanel pInformation;
     // End of variables declaration//GEN-END:variables
 }
