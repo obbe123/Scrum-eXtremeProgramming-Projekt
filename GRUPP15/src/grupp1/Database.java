@@ -15,7 +15,11 @@ import java.io.File;
  * @author Sapporun
  */
 public class Database {
+<<<<<<< HEAD
     public int test7;
+=======
+    public int test4;
+>>>>>>> refs/remotes/origin/master
 
     public static Connection getDB() {
         String filePath = "";
