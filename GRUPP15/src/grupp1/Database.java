@@ -16,7 +16,7 @@ import java.io.File;
  */
 public class Database {
 
-    public int test7ConflictFixadAvPeter;
+    public int test8william;
 
 
     public static Connection getDB() {
