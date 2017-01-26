@@ -15,19 +15,9 @@ import java.io.File;
  * @author Sapporun
  */
 public class Database {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public int test7;
-=======
-    public int test4;
->>>>>>> refs/remotes/origin/master
-=======
-    public int test8;
->>>>>>> origin/Fridas2
-=======
-    public int test7;
->>>>>>> origin/Fridas2
+
+    public int test7ConflictFixadAvPeter;
+
 
     public static Connection getDB() {
         String filePath = "";
