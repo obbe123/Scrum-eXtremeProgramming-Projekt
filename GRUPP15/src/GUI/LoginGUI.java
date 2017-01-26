@@ -5,7 +5,13 @@
  */
 package GUI;
 
+import grupp1.Database;
 import grupp1.Person;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -111,11 +117,40 @@ public class LoginGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Person inloggadPerson = new Person("Peter","Karlsson",1337,"T","unomaster1337@oru.se","Github Master");
-        HemGUI hem = new HemGUI(inloggadPerson);
-        hem.setVisible(true);
-        hem.setLocationRelativeTo(null);
-        dispose();
+        try {
+            String angEpost = jTextField1.getText();
+            Connection con = Database.getDB();
+            Statement stmt = con.createStatement();
+            String sql = "SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'";
+            ResultSet rs = stmt.executeQuery(sql);
+            char[] pwNummer = jPasswordField1.getPassword();
+            String realPassword = new String(pwNummer);
+            String fNamn = "";
+            String eNamn = "";
+            int tele = 0;
+            String email = "";
+            String losenord = "";
+            
+            while (rs.next()) {
+                fNamn = rs.getString("F_NAMN");
+                eNamn = rs.getString("E_NAMN");
+                tele = rs.getInt("TELEFON");
+                email = rs.getString("ANVANDAR_EPOST");
+                losenord = rs.getString("LOSENORD");
+            }
+            if(angEpost.equals(email) && realPassword.equals(losenord)){
+            Person inloggadPerson = new Person(fNamn, eNamn, tele, email, losenord);
+            HemGUI hem = new HemGUI(inloggadPerson);
+            hem.setVisible(true);
+            hem.setLocationRelativeTo(null);
+            dispose();
+            } else {
+            JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");    
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
