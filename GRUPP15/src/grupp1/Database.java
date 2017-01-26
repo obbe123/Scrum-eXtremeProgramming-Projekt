@@ -15,7 +15,7 @@ import java.io.File;
  * @author Sapporun
  */
 public class Database {
-    public int test7;
+    public int test8;
 
     public static Connection getDB() {
         String filePath = "";
