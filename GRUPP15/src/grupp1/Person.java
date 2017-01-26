@@ -41,7 +41,7 @@ public class Person {
         return email;
     }
     
-    public String getlosenord(){
+    public String getLosenord(){
         return losenord;
     }
 }

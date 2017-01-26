@@ -181,8 +181,7 @@ public class HemGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
-        jTextArea1.setText("hej Malin");
+        jTextArea1.setText("Du är inloggad som " + personen.getFNamn() + " " + personen.getENamn() + " din titel är: " + personen.getLosenord());
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
