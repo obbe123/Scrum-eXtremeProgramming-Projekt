@@ -164,20 +164,21 @@ public class HemGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         try {
-            Connection con = Database.getDB();
-            Statement stmt = con.createStatement();
-            String sql = "SELECT * FROM namn";
-            ResultSet rs = stmt.executeQuery(sql);
-            String p = "";
-            
-            while (rs.next()) {
-                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
-                jTextArea1.setText(p);
-            }
-        } catch (SQLException error) {
-            System.out.println(error.getMessage());
-        }
+
+//         try {
+//            Connection con = Database.getDB();
+//            Statement stmt = con.createStatement();
+//            String sql = "SELECT * FROM namn";
+//            ResultSet rs = stmt.executeQuery(sql);
+//            String p = "";
+//            
+//            while (rs.next()) {
+//                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
+//                jTextArea1.setText(p);
+//            }
+//        } catch (SQLException error) {
+//            System.out.println(error.getMessage());
+//        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
