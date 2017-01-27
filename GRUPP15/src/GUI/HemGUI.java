@@ -6,7 +6,7 @@
 package GUI;
 
 import grupp1.Database;
-import java.io.File;
+import grupp1.Person;
 import java.sql.*;
 
 /**
@@ -15,9 +15,10 @@ import java.sql.*;
  */
 public class HemGUI extends javax.swing.JFrame {
 
-    private int hej;
+    private Person personen;
 
-    public HemGUI() {
+    public HemGUI(Person personen) {
+        this.personen = personen;
         initComponents();
     }
 
@@ -92,6 +93,11 @@ public class HemGUI extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Startsida");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Skapa inlägg");
@@ -173,6 +179,10 @@ public class HemGUI extends javax.swing.JFrame {
             System.out.println(error.getMessage());
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jTextArea1.setText("Du är inloggad som " + personen.getFNamn() + " " + personen.getENamn() + " ditt telefonnr: " + personen.getTelefon());
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
