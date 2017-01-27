@@ -216,7 +216,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnNyProfilB">
       <Properties>
-        <Property name="text" type="java.lang.String" value="V&#xe4;lj ny profilbild"/>
+        <Property name="text" type="java.lang.String" value="V&#xe4;lj bild"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNyProfilBActionPerformed"/>
