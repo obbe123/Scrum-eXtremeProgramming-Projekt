@@ -6,6 +6,7 @@
 package GUI;
 
 import java.awt.Font;
+import grupp1.Database;
 
 /**
  *
@@ -65,6 +66,11 @@ public class InlaggGUI extends javax.swing.JFrame {
         });
 
         btnPublicera.setText("Publicera");
+        btnPublicera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPubliceraActionPerformed(evt);
+            }
+        });
 
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnBold.setText("B");
@@ -187,6 +193,28 @@ public class InlaggGUI extends javax.swing.JFrame {
     private void tfRubrikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRubrikMouseClicked
     tfRubrik.setText(null);
     }//GEN-LAST:event_tfRubrikMouseClicked
+
+    private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
+    //        String rubrik = tfRubrik.getText();
+//        String inlaggText = taInlagg.getText();
+//        String kategori = (String) cbKategori.getSelectedItem();
+//        String ingress = inlaggText.substring(0, 100) + "...";
+//        String datum = "2017-01-27"; //dagens datum
+//        String inlaggId = "1"; //ska ske med autoIncrement
+//        String forfattare = "30"; //ska ju vara id för inloggad användare
+
+//        try {
+
+////          String id = Database.getAutoIncrement("inlagg", "inlaggid"); //Ger inlägget nästa lediga id för inlägg
+//            Database.insert("insert into inlagg (inlaggid, rubrik, ingress, heltext, datum, forfattare) values "
+//                    + "('" + inlaggId + "'," + "'" + rubrik + "'," + "'" + ingress + "'," + "'" + inlaggText + "'" + "," + " '" + datum + "'" + "," + "'" + forfattare + ")");
+//            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+//
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, "Någonting gick fel!");
+//
+//        }
+    }//GEN-LAST:event_btnPubliceraActionPerformed
 
     /**
      * @param args the command line arguments
