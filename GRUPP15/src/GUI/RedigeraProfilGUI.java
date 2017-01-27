@@ -132,7 +132,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
-        btnNyProfilB.setText("Välj ny profilbild");
+        btnNyProfilB.setText("Välj bild");
         btnNyProfilB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNyProfilBActionPerformed(evt);

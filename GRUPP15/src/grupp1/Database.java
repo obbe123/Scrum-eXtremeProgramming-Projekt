@@ -24,7 +24,6 @@ public class Database {
 
     public int test8william;
 
-
     public static Connection getDB() {
         String filePath = "";
         try {
@@ -40,44 +39,70 @@ public class Database {
             return null;
         }
     }
-    public static ResultSet sqlFraga (String fragan){
-        try{
-        Connection con = Database.getDB();
-        Statement stmt = con.createStatement();            
-        ResultSet rs = stmt.executeQuery(fragan);   
-        return rs;
-        }
-        catch (Exception e){
+
+    public static ResultSet sqlFraga(String fragan) {
+        try {
+            Connection con = Database.getDB();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(fragan);
+            return rs;
+        } catch (Exception e) {
             return null;
         }
-        
+
     }
-public static void laggTillBild(Person personen) {
+
+    public static void laggTillBild(Person personen) {
         try {
-            int personid = personen.getId();
-            JFileChooser bildChooser = new JFileChooser();
-            bildChooser.setDialogTitle("Välj bild");
-            bildChooser.showOpenDialog(null);
-            File valdBild=bildChooser.getSelectedFile();
-            ResultSet bildDB = Database.sqlFraga("Select ID from bilder");
-            int antalBilder = 1;
-            while (bildDB.next()) {
-            antalBilder++;
+            ResultSet idKollTom = Database.sqlFraga("select PERSONID from bilder join ANVANDARE on PERSONID = ANVANDARE.ANVANDARID WHERE ANVANDARID = " + personen.getId());
+            if (idKollTom.next()) {
+                try {
+                    JFileChooser bildChooser = new JFileChooser();
+                    bildChooser.setDialogTitle("Välj bild");
+                    bildChooser.showOpenDialog(null);
+                    File valdBild = bildChooser.getSelectedFile();
+                    Connection con = Database.getDB();
+                    PreparedStatement ps = con.prepareStatement("update BILDER set FOTO = (?) where PERSONID = " + personen.getId());
+                    FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
+                    ps.setBinaryStream(1, fin, fin.available());
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Din bild har blivit uppdaterad!");
+                    con.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
+                }
+            } else {
+                try {
+                    ResultSet bildDB = Database.sqlFraga("Select ID from bilder");
+                    int personid = personen.getId();
+                    JFileChooser bildChooser = new JFileChooser();
+                    bildChooser.setDialogTitle("Välj bild");
+                    bildChooser.showOpenDialog(null);
+                    File valdBild = bildChooser.getSelectedFile();
+                    int antalBilder = 1;
+                    while (bildDB.next()) {
+                        antalBilder++;
                     }
-            String bildNamn = "Bild" + antalBilder;
-            Connection con = Database.getDB();
-            PreparedStatement ps = con.prepareStatement("insert into BILDER values(?,?,?,?)");
-            ps.setInt(1, antalBilder);
-            ps.setString(2, bildNamn);
-            FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
-            ps.setBinaryStream(3, fin, fin.available());
-            ps.setInt(4, personid);
-            int i = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "En bild har blivit uppladdad!");
-            con.close();
-            
+                    String bildNamn = "Bild" + antalBilder;
+                    Connection con = Database.getDB();
+                    PreparedStatement ps = con.prepareStatement("insert into BILDER values(?,?,?,?)");
+                    ps.setInt(1, antalBilder);
+                    ps.setString(2, bildNamn);
+                    FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
+                    ps.setBinaryStream(3, fin, fin.available());
+                    ps.setInt(4, personid);
+                    int i = ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "En bild har blivit uppladdad!");
+                    con.close();
+
+                } catch (Exception e) {
+                    System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
+                }
+            }
+
         } catch (Exception e) {
             System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
         }
-        }
+
+    }
 }
