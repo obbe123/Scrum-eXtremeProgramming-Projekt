@@ -67,9 +67,11 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblNamn = new javax.swing.JLabel();
         lblOvrigInfo = new javax.swing.JLabel();
         btnRedigera = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(525, 430));
+        setResizable(false);
 
         pBild.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -77,7 +79,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         pBild.setLayout(pBildLayout);
         pBildLayout.setHorizontalGroup(
             pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 143, Short.MAX_VALUE)
+            .addGap(0, 159, Short.MAX_VALUE)
         );
         pBildLayout.setVerticalGroup(
             pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +96,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         );
         pBeskrivningLayout.setVerticalGroup(
             pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
+            .addGap(0, 122, Short.MAX_VALUE)
         );
 
         pInformation.setBackground(new java.awt.Color(255, 255, 255));
@@ -175,6 +177,13 @@ public class ProfilGUI extends javax.swing.JFrame {
             }
         });
 
+        btnExit.setText("Huvudmeny");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,7 +195,9 @@ public class ProfilGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(btnExit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRedigera))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -215,8 +226,10 @@ public class ProfilGUI extends javax.swing.JFrame {
                 .addGap(2, 2, 2)
                 .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRedigera)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRedigera)
+                    .addComponent(btnExit))
+                .addContainerGap())
         );
 
         pack();
@@ -226,13 +239,21 @@ public class ProfilGUI extends javax.swing.JFrame {
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
         // Till RegideraProfilGUI
         
-        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI();
+        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI(personen);
         rpGUI.setVisible(true);
         dispose();
         
     }//GEN-LAST:event_btnRedigeraActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        HemGUI hem = new HemGUI(personen);
+        hem.setVisible(true);
+        hem.setLocationRelativeTo(null);
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRedigera;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblNamn;

@@ -6,17 +6,20 @@
 package GUI;
 
 import java.awt.Font;
+import grupp1.Database;
+import grupp1.Person;
 
 /**
  *
  * @author malin
  */
 public class InlaggGUI extends javax.swing.JFrame {
-
+private Person personen;
     /**
      * Creates new form Inlagg
      */
-    public InlaggGUI() {
+    public InlaggGUI(Person personen) {
+        this.personen = personen;
         initComponents();
 
         //Lägga in dessa + fler i databasen istället?
@@ -48,8 +51,10 @@ public class InlaggGUI extends javax.swing.JFrame {
         btnBold = new javax.swing.JToggleButton();
         btnItalic = new javax.swing.JToggleButton();
         btnAndra = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         taInlagg.setColumns(20);
@@ -65,6 +70,11 @@ public class InlaggGUI extends javax.swing.JFrame {
         });
 
         btnPublicera.setText("Publicera");
+        btnPublicera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPubliceraActionPerformed(evt);
+            }
+        });
 
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnBold.setText("B");
@@ -89,6 +99,13 @@ public class InlaggGUI extends javax.swing.JFrame {
             }
         });
 
+        btnExit.setText("Huvudmeny");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -99,7 +116,10 @@ public class InlaggGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnExit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addComponent(btnPublicera, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))
@@ -120,7 +140,7 @@ public class InlaggGUI extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(76, Short.MAX_VALUE)
+                .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,7 +157,9 @@ public class InlaggGUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExit)))
                     .addComponent(btnPublicera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
@@ -145,6 +167,7 @@ public class InlaggGUI extends javax.swing.JFrame {
         getContentPane().add(jPanel1, "card2");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 //Måste ändra både font och storlek samtidigt just nu vilket innebär att det 
 //måste finnas en "ändra" knapp 
@@ -188,6 +211,35 @@ public class InlaggGUI extends javax.swing.JFrame {
     tfRubrik.setText(null);
     }//GEN-LAST:event_tfRubrikMouseClicked
 
+    private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
+    //        String rubrik = tfRubrik.getText();
+//        String inlaggText = taInlagg.getText();
+//        String kategori = (String) cbKategori.getSelectedItem();
+//        String ingress = inlaggText.substring(0, 100) + "...";
+//        String datum = "2017-01-27"; //dagens datum
+//        String inlaggId = "1"; //ska ske med autoIncrement
+//        String forfattare = "30"; //ska ju vara id för inloggad användare
+
+//        try {
+
+////          String id = Database.getAutoIncrement("inlagg", "inlaggid"); //Ger inlägget nästa lediga id för inlägg
+//            Database.insert("insert into inlagg (inlaggid, rubrik, ingress, heltext, datum, forfattare) values "
+//                    + "('" + inlaggId + "'," + "'" + rubrik + "'," + "'" + ingress + "'," + "'" + inlaggText + "'" + "," + " '" + datum + "'" + "," + "'" + forfattare + ")");
+//            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+//
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, "Någonting gick fel!");
+//
+//        }
+    }//GEN-LAST:event_btnPubliceraActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+            HemGUI hem = new HemGUI(personen);
+            hem.setVisible(true);
+            hem.setLocationRelativeTo(null);
+            dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -195,6 +247,7 @@ public class InlaggGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndra;
     private javax.swing.JToggleButton btnBold;
+    private javax.swing.JButton btnExit;
     private javax.swing.JToggleButton btnItalic;
     private javax.swing.JButton btnPublicera;
     private javax.swing.JComboBox<String> cbFont;

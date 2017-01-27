@@ -5,6 +5,7 @@ package grupp1;
 
 public class Person {
     
+    private int id;
     private String fNamn;
     private String eNamn;
     private int pNummer;
@@ -15,7 +16,8 @@ public class Person {
     private String ovrigt;
     private String losenord;
     
-    public Person(String fNamn, String eNamn, int pNummer, int telefon, String email, boolean admin, String beskrivning, String ovrigt, String losenord){
+    public Person(int id, String fNamn, String eNamn, int pNummer, int telefon, String email, boolean admin, String beskrivning, String ovrigt, String losenord){
+        this.id = id;
         this.fNamn = fNamn;
         this.eNamn = eNamn;
         this.pNummer = pNummer;
@@ -26,7 +28,9 @@ public class Person {
         this.ovrigt = ovrigt;
         this.losenord = losenord;
     }
-    
+    public int getId() {
+    return id;
+    }
     public String getFNamn(){
         return fNamn;
     }
