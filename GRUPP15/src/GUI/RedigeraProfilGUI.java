@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import grupp1.Database;
+import grupp1.Person;
 /**
  *
  * @author itslo
  */
 public class RedigeraProfilGUI extends javax.swing.JFrame {
+    private Person personen;
 
     /**
      * Creates new form RedigeraProfilGUI
      */
-    public RedigeraProfilGUI() {
+    public RedigeraProfilGUI(Person personen) {
+        this.personen = personen;
         initComponents();
     }
 
@@ -40,8 +43,10 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         btnAndra = new javax.swing.JButton();
         btnNyProfilB = new javax.swing.JButton();
         btnAndraBeskriv = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         pAndraBild.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -128,8 +133,20 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         );
 
         btnNyProfilB.setText("Välj ny profilbild");
+        btnNyProfilB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNyProfilBActionPerformed(evt);
+            }
+        });
 
         btnAndraBeskriv.setText("Ändra");
+
+        btnExit.setText("Tillbaka till Profil");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,20 +155,23 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(pAndraBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pAndraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnNyProfilB))
-                        .addGap(0, 11, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAndraBeskriv)
-                .addGap(64, 64, 64))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(pAndraBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(pAndraInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnNyProfilB))
+                                .addGap(0, 15, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnExit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAndraBeskriv)
+                        .addGap(64, 64, 64))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,12 +183,16 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(btnNyProfilB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAndraBeskriv))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAndraBeskriv)
+                    .addComponent(btnExit))
+                .addGap(11, 11, 11))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfAndraTeleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAndraTeleActionPerformed
@@ -179,10 +203,21 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAndraActionPerformed
 
+    private void btnNyProfilBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyProfilBActionPerformed
+        Database.laggTillBild(personen);
+    }//GEN-LAST:event_btnNyProfilBActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        ProfilGUI pGUI = new ProfilGUI(personen);
+        pGUI.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAndra;
     private javax.swing.JButton btnAndraBeskriv;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnNyProfilB;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEpost;

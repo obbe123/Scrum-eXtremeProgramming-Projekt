@@ -145,6 +145,7 @@ public class LoginGUI extends javax.swing.JFrame {
             String eNamn = "";
             int pNummer = 0;
             int tele = 0;
+            int id = 0;
             Boolean admin = null;
             String beskrivning = "";
             String ovrigt = "";
@@ -152,6 +153,7 @@ public class LoginGUI extends javax.swing.JFrame {
             String losenord = "";
             
             while (rs.next()) {
+                id = rs.getInt("ANVANDARID");
                 fNamn = rs.getString("F_NAMN");
                 eNamn = rs.getString("E_NAMN");
                 pNummer = rs.getInt("PNUMMER");
@@ -163,7 +165,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 losenord = rs.getString("LOSENORD");
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-            Person inloggadPerson = new Person(fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord);
+            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord);
             HemGUI hem = new HemGUI(inloggadPerson);
             hem.setVisible(true);
             hem.setLocationRelativeTo(null);
