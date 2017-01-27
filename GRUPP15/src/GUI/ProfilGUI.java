@@ -25,10 +25,10 @@ public class ProfilGUI extends javax.swing.JFrame {
         String namn = personen.getFNamn() +" " + personen.getENamn();
         lblNamn.setText(namn);
         
-        String organisation ="";
+        String organisation = personen.getOrg();
         lblVisaOrg.setText(organisation);
         
-        String titel =""; 
+        String titel =personen.getTitel(); 
         lblVisaTitel.setText(titel);
         
         String epost = personen.getEmail();
@@ -40,6 +40,12 @@ public class ProfilGUI extends javax.swing.JFrame {
         
         String rum = "";
         lblVisaRum.setText(rum);
+        
+        String beskrivning = personen.getBeskrivning();
+        lblBeskrivning.setText("Beskrivning: " + beskrivning);
+
+        String ovrigInfo = personen.getOvrigInfo();
+        lblOvrigInfo.setText("Övrig information: " + ovrigInfo);
     }
 
     /**
@@ -53,6 +59,8 @@ public class ProfilGUI extends javax.swing.JFrame {
 
         pBild = new javax.swing.JPanel();
         pBeskrivning = new javax.swing.JPanel();
+        lblBeskrivning = new javax.swing.JLabel();
+        lblOvrigInfo = new javax.swing.JLabel();
         pInformation = new javax.swing.JPanel();
         lblOrganisation = new javax.swing.JLabel();
         lblTitel = new javax.swing.JLabel();
@@ -65,7 +73,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblVisaEpost = new javax.swing.JLabel();
         lblVisaRum = new javax.swing.JLabel();
         lblNamn = new javax.swing.JLabel();
-        lblOvrigInfo = new javax.swing.JLabel();
+        lblInformation = new javax.swing.JLabel();
         btnRedigera = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
@@ -79,7 +87,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         pBild.setLayout(pBildLayout);
         pBildLayout.setHorizontalGroup(
             pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 159, Short.MAX_VALUE)
+            .addGap(0, 166, Short.MAX_VALUE)
         );
         pBildLayout.setVerticalGroup(
             pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,15 +96,27 @@ public class ProfilGUI extends javax.swing.JFrame {
 
         pBeskrivning.setBackground(new java.awt.Color(255, 255, 255));
 
+        lblBeskrivning.setText("Beskrivning: ");
+
+        lblOvrigInfo.setText("Övrig info: ");
+
         javax.swing.GroupLayout pBeskrivningLayout = new javax.swing.GroupLayout(pBeskrivning);
         pBeskrivning.setLayout(pBeskrivningLayout);
         pBeskrivningLayout.setHorizontalGroup(
             pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(pBeskrivningLayout.createSequentialGroup()
+                .addGroup(pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblOvrigInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pBeskrivningLayout.setVerticalGroup(
             pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 122, Short.MAX_VALUE)
+            .addGroup(pBeskrivningLayout.createSequentialGroup()
+                .addComponent(lblBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblOvrigInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         pInformation.setBackground(new java.awt.Color(255, 255, 255));
@@ -168,7 +188,7 @@ public class ProfilGUI extends javax.swing.JFrame {
 
         lblNamn.setText("Förnamn Efternamn");
 
-        lblOvrigInfo.setText("Övrig information");
+        lblInformation.setText("Information om: ");
 
         btnRedigera.setText("Redigera profil");
         btnRedigera.addActionListener(new java.awt.event.ActionListener() {
@@ -188,10 +208,6 @@ public class ProfilGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblOvrigInfo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -199,16 +215,19 @@ public class ProfilGUI extends javax.swing.JFrame {
                         .addComponent(btnExit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRedigera))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pBeskrivning, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(pBild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblNamn))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblInformation)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblNamn)))))))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -217,13 +236,13 @@ public class ProfilGUI extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNamn)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblNamn)
+                            .addComponent(lblInformation))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblOvrigInfo)
-                .addGap(2, 2, 2)
+                .addGap(34, 34, 34)
                 .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,7 +274,9 @@ public class ProfilGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRedigera;
+    private javax.swing.JLabel lblBeskrivning;
     private javax.swing.JLabel lblEpost;
+    private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOrganisation;
     private javax.swing.JLabel lblOvrigInfo;

@@ -1,10 +1,7 @@
-
-
 package grupp1;
 
-
 public class Person {
-    
+
     private int id;
     private String fNamn;
     private String eNamn;
@@ -13,10 +10,14 @@ public class Person {
     private String email;
     private boolean admin;
     private String beskrivning;
-    private String ovrigt;
+    private String ovrigInfo;
     private String losenord;
-    
-    public Person(int id, String fNamn, String eNamn, int pNummer, int telefon, String email, boolean admin, String beskrivning, String ovrigt, String losenord){
+    private String titel;
+    private String org;
+
+    public Person(int id, String fNamn, String eNamn, int pNummer, int telefon, String email,
+            boolean admin, String beskrivning, String ovrigt, String losenord, String titel, String organisation) {
+
         this.id = id;
         this.fNamn = fNamn;
         this.eNamn = eNamn;
@@ -25,30 +26,45 @@ public class Person {
         this.email = email;
         this.admin = admin;
         this.beskrivning = beskrivning;
-        this.ovrigt = ovrigt;
+        this.ovrigInfo = ovrigt;
         this.losenord = losenord;
+        this.titel = titel;
+        this.org = organisation;
     }
+
     public int getId() {
-    return id;
+        return id;
     }
-    public String getFNamn(){
+
+    public String getFNamn() {
         return fNamn;
     }
-    
-    public String getENamn(){
+
+    public String getENamn() {
         return eNamn;
     }
-    
-    public int getTelefon(){
+
+    public int getTelefon() {
         return telefon;
     }
 
-    
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
-    
-    public String getLosenord(){
+
+    public String getLosenord() {
         return losenord;
+    }
+    public String getTitel() {
+        return titel;
+    }
+    public String getOrg() {
+        return org;
+    }
+    public String getBeskrivning() {
+        return beskrivning;
+    }
+    public String getOvrigInfo() {
+        return ovrigInfo;
     }
 }
