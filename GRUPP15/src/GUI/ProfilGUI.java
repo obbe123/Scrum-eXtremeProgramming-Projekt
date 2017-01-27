@@ -5,17 +5,41 @@
  */
 package GUI;
 
+import grupp1.Person;
+
 /**
  *
  * @author itslo
  */
 public class ProfilGUI extends javax.swing.JFrame {
+    
+    private Person personen;
 
     /**
      * Creates new form ProfilGUI
      */
-    public ProfilGUI() {
+   public ProfilGUI(Person personen) {
         initComponents();
+        this.personen = personen;
+        
+        String namn = personen.getFNamn() +" " + personen.getENamn();
+        lblNamn.setText(namn);
+        
+        String organisation ="";
+        lblVisaOrg.setText(organisation);
+        
+        String titel =""; 
+        lblVisaTitel.setText(titel);
+        
+        String epost = personen.getEmail();
+        lblVisaEpost.setText(epost);
+        
+        int telenr = personen.getTelefon();
+        String tele = Integer.toString(telenr);
+        lblVisaTel.setText("0"+tele);
+        
+        String rum = "";
+        lblVisaRum.setText(rum);
     }
 
     /**
@@ -145,6 +169,11 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblOvrigInfo.setText("Övrig information");
 
         btnRedigera.setText("Redigera profil");
+        btnRedigera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRedigeraActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +222,15 @@ public class ProfilGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
+        // Till RegideraProfilGUI
+        
+        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI();
+        rpGUI.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_btnRedigeraActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRedigera;
