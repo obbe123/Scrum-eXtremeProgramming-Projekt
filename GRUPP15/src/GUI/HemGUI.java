@@ -165,7 +165,7 @@ public class HemGUI extends javax.swing.JFrame {
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
 
-        ProfilGUI pGUI = new ProfilGUI();
+        ProfilGUI pGUI = new ProfilGUI(personen);
         pGUI.setVisible(true);
         dispose();
         
