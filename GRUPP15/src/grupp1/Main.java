@@ -21,7 +21,7 @@ public class Main {
             Connection con = Database.getDB();
             LoginGUI login1 = new LoginGUI();
             login1.setVisible(true);
-            login1.setLocationRelativeTo(null);
+            login1.setLocationRelativeTo(null); 
     }
 
 }

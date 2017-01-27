@@ -9,8 +9,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.io.File;
+import java.io.FileInputStream;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,4 +52,33 @@ public class Database {
         }
         
     }
+public static void laggTillBild(Person personen) {
+       System.out.println(personen.getId());
+        try {
+            int personid = personen.getId();
+            JFileChooser bildChooser = new JFileChooser();
+            bildChooser.setDialogTitle("Välj bild");
+            bildChooser.showOpenDialog(null);
+            File valdBild=bildChooser.getSelectedFile();
+            ResultSet bildDB = Database.sqlFraga("Select ID from bilder");
+            int antalBilder = 1;
+            while (bildDB.next()) {
+            antalBilder++;
+                    }
+            String bildNamn = "Bild" + antalBilder;
+            Connection con = Database.getDB();
+            PreparedStatement ps = con.prepareStatement("insert into BILDER values(?,?,?,?)");
+            ps.setInt(1, antalBilder);
+            ps.setString(2, bildNamn);
+            FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
+            ps.setBinaryStream(3, fin, fin.available());
+            ps.setInt(4, personid);
+            int i = ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, i + " har blivit uppladdad!");
+            con.close();
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage() + "FEL!");
+        }
+        }
 }
