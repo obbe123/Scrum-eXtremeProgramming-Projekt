@@ -24,7 +24,6 @@ public class Database {
 
     public int test8william;
 
-
     public static Connection getDB() {
         String filePath = "";
         try {
@@ -40,20 +39,22 @@ public class Database {
             return null;
         }
     }
-    public static ResultSet sqlFraga (String fragan){
-        try{
-        Connection con = Database.getDB();
-        Statement stmt = con.createStatement();            
-        ResultSet rs = stmt.executeQuery(fragan);   
-        return rs;
-        }
-        catch (Exception e){
+
+    public static ResultSet sqlFraga(String fragan) {
+        try {
+            Connection con = Database.getDB();
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(fragan);
+            return rs;
+        } catch (Exception e) {
             return null;
         }
-        
+
     }
-public static void laggTillBild(Person personen) {
-try {
+
+    public static void laggTillBild(Person personen) {
+        try {
+
             ResultSet idKollTom = Database.sqlFraga("select PERSONID from bilder join ANVANDARE on PERSONID = ANVANDARE.ANVANDARID WHERE ANVANDARID = " + personen.getId());
             if (idKollTom.next()) {
                 try {
@@ -69,7 +70,6 @@ try {
                     JOptionPane.showMessageDialog(null, "Din bild har blivit uppdaterad!");
                     con.close();
                 } catch (Exception e) {
-                    System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
                 }
             } else {
                 try {
@@ -94,15 +94,12 @@ try {
                     int i = ps.executeUpdate();
                     JOptionPane.showMessageDialog(null, "En bild har blivit uppladdad!");
                     con.close();
-
                 } catch (Exception e) {
-                    System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
                 }
             }
 
         } catch (Exception e) {
             System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
         }
-        }
-
+    }
 }
