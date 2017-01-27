@@ -118,11 +118,9 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
+            
             String angEpost = jTextField1.getText();
-            Connection con = Database.getDB();
-            Statement stmt = con.createStatement();
-            String sql = "SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'";
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = Database.sqlFraga("SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'");
             char[] pwNummer = jPasswordField1.getPassword();
             String realPassword = new String(pwNummer);
             String fNamn = "";

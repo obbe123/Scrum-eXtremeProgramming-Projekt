@@ -9,25 +9,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author Sapporun
  */
 public class Database {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public int test7;
-=======
-    public int test4;
->>>>>>> refs/remotes/origin/master
-=======
-    public int test8;
->>>>>>> origin/Fridas2
-=======
-    public int test7;
->>>>>>> origin/Fridas2
+
+    public int test8william;
+
 
     public static Connection getDB() {
         String filePath = "";
@@ -43,5 +35,17 @@ public class Database {
             System.out.println(error.getMessage());
             return null;
         }
+    }
+    public static ResultSet sqlFraga (String fragan){
+        try{
+        Connection con = Database.getDB();
+        Statement stmt = con.createStatement();            
+        ResultSet rs = stmt.executeQuery(fragan);   
+        return rs;
+        }
+        catch (Exception e){
+            return null;
+        }
+        
     }
 }
