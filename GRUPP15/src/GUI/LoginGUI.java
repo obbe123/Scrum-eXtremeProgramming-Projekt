@@ -125,19 +125,27 @@ public class LoginGUI extends javax.swing.JFrame {
             String realPassword = new String(pwNummer);
             String fNamn = "";
             String eNamn = "";
+            int pNummer = 0;
             int tele = 0;
+            Boolean admin = null;
+            String beskrivning = "";
+            String ovrigt = "";
             String email = "";
             String losenord = "";
             
             while (rs.next()) {
                 fNamn = rs.getString("F_NAMN");
                 eNamn = rs.getString("E_NAMN");
-                tele = rs.getInt("TELEFON");
+                pNummer = rs.getInt("PNUMMER");
+                tele = 0 + rs.getInt("TELEFON");
                 email = rs.getString("ANVANDAR_EPOST");
+                admin = rs.getBoolean("admin");
+                beskrivning = rs.getString("BESKRIVNING");
+                ovrigt = rs.getString("OVRIG_INFO");
                 losenord = rs.getString("LOSENORD");
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-            Person inloggadPerson = new Person(fNamn, eNamn, tele, email, losenord);
+            Person inloggadPerson = new Person(fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord);
             HemGUI hem = new HemGUI(inloggadPerson);
             hem.setVisible(true);
             hem.setLocationRelativeTo(null);
