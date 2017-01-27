@@ -53,7 +53,6 @@ public class Database {
         
     }
 public static void laggTillBild(Person personen) {
-       System.out.println(personen.getId());
         try {
             int personid = personen.getId();
             JFileChooser bildChooser = new JFileChooser();
@@ -74,11 +73,11 @@ public static void laggTillBild(Person personen) {
             ps.setBinaryStream(3, fin, fin.available());
             ps.setInt(4, personid);
             int i = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, i + " har blivit uppladdad!");
+            JOptionPane.showMessageDialog(null, "En bild har blivit uppladdad!");
             con.close();
             
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "FEL!");
+            System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
         }
         }
 }
