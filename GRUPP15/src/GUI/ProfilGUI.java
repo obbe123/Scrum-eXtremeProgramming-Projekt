@@ -226,7 +226,7 @@ public class ProfilGUI extends javax.swing.JFrame {
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
         // Till RegideraProfilGUI
         
-        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI();
+        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI(personen);
         rpGUI.setVisible(true);
         dispose();
         

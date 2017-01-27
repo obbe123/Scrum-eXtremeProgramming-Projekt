@@ -52,8 +52,10 @@ public class Database {
         }
         
     }
-    public static void laggTillBild() {
+public static void laggTillBild(Person personen) {
+       System.out.println(personen.getId());
         try {
+            int personid = personen.getId();
             JFileChooser bildChooser = new JFileChooser();
             bildChooser.setDialogTitle("Välj bild");
             bildChooser.showOpenDialog(null);
@@ -63,18 +65,20 @@ public class Database {
             while (bildDB.next()) {
             antalBilder++;
                     }
-            String bildNamn = "testbild" + antalBilder;
+            String bildNamn = "Bild" + antalBilder;
             Connection con = Database.getDB();
-            PreparedStatement ps = con.prepareStatement("insert into BILDER(ID,NAMN,FOTO) values(?,?,?)");
+            PreparedStatement ps = con.prepareStatement("insert into BILDER values(?,?,?,?)");
             ps.setInt(1, antalBilder);
             ps.setString(2, bildNamn);
             FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
             ps.setBinaryStream(3, fin, fin.available());
+            ps.setInt(4, personid);
             int i = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, i + " har blivit uppladdad!");
             con.close();
+            
         } catch (Exception e) {
             System.out.println(e.getMessage() + "FEL!");
         }
-    }
+        }
 }

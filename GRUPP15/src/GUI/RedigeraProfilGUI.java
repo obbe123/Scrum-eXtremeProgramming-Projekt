@@ -4,17 +4,20 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import grupp1.Database;
+import grupp1.Person;
 /**
  *
  * @author itslo
  */
 public class RedigeraProfilGUI extends javax.swing.JFrame {
+    private Person personen;
 
     /**
      * Creates new form RedigeraProfilGUI
      */
-    public RedigeraProfilGUI() {
+    public RedigeraProfilGUI(Person personen) {
+        this.personen = personen;
         initComponents();
     }
 
@@ -128,6 +131,11 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         );
 
         btnNyProfilB.setText("Välj ny profilbild");
+        btnNyProfilB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNyProfilBActionPerformed(evt);
+            }
+        });
 
         btnAndraBeskriv.setText("Ändra");
 
@@ -178,6 +186,10 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
     private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAndraActionPerformed
+
+    private void btnNyProfilBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyProfilBActionPerformed
+        Database.laggTillBild(personen);
+    }//GEN-LAST:event_btnNyProfilBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
