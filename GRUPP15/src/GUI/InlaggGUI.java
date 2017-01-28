@@ -69,6 +69,7 @@ private Person personen;
             }
         });
 
+        btnPublicera.setBackground(new java.awt.Color(255, 255, 255));
         btnPublicera.setText("Publicera");
         btnPublicera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +77,7 @@ private Person personen;
             }
         });
 
+        btnBold.setBackground(new java.awt.Color(255, 255, 255));
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnBold.setText("B");
         btnBold.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,7 @@ private Person personen;
             }
         });
 
+        btnItalic.setBackground(new java.awt.Color(255, 255, 255));
         btnItalic.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         btnItalic.setText("I");
         btnItalic.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +95,7 @@ private Person personen;
             }
         });
 
+        btnAndra.setBackground(new java.awt.Color(255, 255, 255));
         btnAndra.setText("Ändra");
         btnAndra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +103,7 @@ private Person personen;
             }
         });
 
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Huvudmeny");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
