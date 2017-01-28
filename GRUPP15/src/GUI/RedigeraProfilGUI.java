@@ -25,7 +25,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
     public RedigeraProfilGUI(Person personen) {
         this.personen = personen;
         initComponents();
-        ResultSet rs = Database.sqlFraga("select FOTO from bilder where personid = " + personen.getId());
+        ResultSet rs = Database.sqlSelect("select FOTO from bilder where personid = " + personen.getId());
         try {
             if (rs.next()) {
                 byte[] img = rs.getBytes("FOTO");
