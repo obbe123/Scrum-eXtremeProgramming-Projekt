@@ -44,6 +44,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -143,14 +144,16 @@ public class LoginGUI extends javax.swing.JFrame {
             String realPassword = new String(pwNummer);
             String fNamn = "";
             String eNamn = "";
-            int pNummer = 0;
-            int tele = 0;
-            int id = 0;
             Boolean admin = null;
             String beskrivning = "";
             String ovrigt = "";
             String email = "";
             String losenord = "";
+            String titel = "";
+            String org = "";
+            int pNummer = 0;
+            int tele = 0;
+            int id = 0;
             
             while (rs.next()) {
                 id = rs.getInt("ANVANDARID");
@@ -163,9 +166,12 @@ public class LoginGUI extends javax.swing.JFrame {
                 beskrivning = rs.getString("BESKRIVNING");
                 ovrigt = rs.getString("OVRIG_INFO");
                 losenord = rs.getString("LOSENORD");
+                titel = rs.getString("TITEL");
+                org = rs.getString("ORGANISATION");
+                
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord);
+            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
             HemGUI hem = new HemGUI(inloggadPerson);
             hem.setVisible(true);
             hem.setLocationRelativeTo(null);
