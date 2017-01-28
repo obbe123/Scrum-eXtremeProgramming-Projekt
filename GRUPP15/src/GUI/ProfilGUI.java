@@ -51,7 +51,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         String ovrigInfo = personen.getOvrigInfo();
         lblVisaOvrigInfo.setText(ovrigInfo);
 
-        ResultSet rs = Database.sqlFraga("select FOTO from bilder where personid = " + personen.getId());
+        ResultSet rs = Database.sqlSelect("select FOTO from bilder where personid = " + personen.getId());
         try {
             if (rs.next()) {
                 byte[] img = rs.getBytes("FOTO");
