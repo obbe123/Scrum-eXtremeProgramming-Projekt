@@ -5,19 +5,30 @@
  */
 package GUI;
 
-import java.awt.CardLayout;
+import java.awt.Font;
+import grupp1.Database;
+import grupp1.Person;
 
 /**
  *
- * @author malin och najda
+ * @author malin
  */
 public class InlaggGUI extends javax.swing.JFrame {
-
+private Person inloggadPerson;
     /**
      * Creates new form Inlagg
      */
-    public InlaggGUI() {
+    public InlaggGUI(Person inloggadPerson) {
+        this.inloggadPerson = inloggadPerson;
         initComponents();
+
+        //Lägga in dessa + fler i databasen istället?
+        cbFont.addItem("Monospaced");
+        cbFont.addItem("Arial");
+        cbStorlek.addItem("11");
+        cbStorlek.addItem("16");
+        cbKategori.addItem("Utbildning");
+        cbKategori.addItem("Forskning");
     }
 
     /**
@@ -29,117 +40,223 @@ public class InlaggGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlMain = new javax.swing.JPanel();
+        scrPnltaInlagg = new javax.swing.JScrollPane();
         taInlagg = new javax.swing.JTextArea();
         tfRubrik = new javax.swing.JTextField();
         btnPublicera = new javax.swing.JButton();
         cbKategori = new javax.swing.JComboBox<>();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        lblRubrik = new javax.swing.JLabel();
+        cbFont = new javax.swing.JComboBox<>();
+        cbStorlek = new javax.swing.JComboBox<>();
+        btnBold = new javax.swing.JToggleButton();
+        btnItalic = new javax.swing.JToggleButton();
+        btnAndra = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
         taInlagg.setColumns(20);
         taInlagg.setRows(5);
-        jScrollPane1.setViewportView(taInlagg);
+        scrPnltaInlagg.setViewportView(taInlagg);
 
+        tfRubrik.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tfRubrik.setText("Rubrik");
+        tfRubrik.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tfRubrikMouseClicked(evt);
+            }
+        });
+
+        btnPublicera.setBackground(new java.awt.Color(255, 255, 255));
         btnPublicera.setText("Publicera");
+        btnPublicera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPubliceraActionPerformed(evt);
+            }
+        });
 
-        cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnBold.setBackground(new java.awt.Color(255, 255, 255));
+        btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnBold.setText("B");
+        btnBold.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBoldActionPerformed(evt);
+            }
+        });
 
-        jToggleButton1.setText("jToggleButton1");
+        btnItalic.setBackground(new java.awt.Color(255, 255, 255));
+        btnItalic.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
+        btnItalic.setText("I");
+        btnItalic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnItalicActionPerformed(evt);
+            }
+        });
 
-        jToggleButton2.setText("jToggleButton1");
+        btnAndra.setBackground(new java.awt.Color(255, 255, 255));
+        btnAndra.setText("Ändra");
+        btnAndra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAndraActionPerformed(evt);
+            }
+        });
 
-        jToggleButton3.setText("jToggleButton1");
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("Huvudmeny");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
-        jToggleButton4.setText("jToggleButton1");
-
-        lblRubrik.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblRubrik.setText("Rubrik");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
+        pnlMain.setLayout(pnlMainLayout);
+        pnlMainLayout.setHorizontalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMainLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(398, 398, 398)
-                                    .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblRubrik)))
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(scrPnltaInlagg, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addComponent(btnExit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addComponent(btnPublicera, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(lblRubrik)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jToggleButton4)
-                                    .addComponent(jToggleButton3)
-                                    .addComponent(jToggleButton2)
-                                    .addComponent(jToggleButton1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnAndra)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnBold)
                         .addGap(18, 18, 18)
-                        .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnItalic)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pnlMainLayout.setVerticalGroup(
+            pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
+                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(pnlMainLayout.createSequentialGroup()
+                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnItalic)
+                                    .addComponent(btnBold)
+                                    .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAndra))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addComponent(scrPnltaInlagg, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnExit)))
                     .addComponent(btnPublicera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, "card2");
+        getContentPane().add(pnlMain, "card2");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+//Måste ändra både font och storlek samtidigt just nu vilket innebär att det 
+//måste finnas en "ändra" knapp 
+//allting i textarean ändras, vill att bara selected text ska ändras
+    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
+
+        String font = (String) cbFont.getSelectedItem();
+        String fontStorlek = (String) cbStorlek.getSelectedItem();
+        int storlek2 = Integer.parseInt(fontStorlek);
+
+        Font myFont = new Font(font, Font.PLAIN, storlek2);
+
+        taInlagg.setFont(myFont);
+    }//GEN-LAST:event_btnAndraActionPerformed
+//Just nu kan texten inte vara bold och italic samtidigt 
+//och allting i textarean blir fetstil
+
+    private void btnBoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoldActionPerformed
+
+        if (btnBold.isSelected()) {
+            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.BOLD));
+
+        } else {
+            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.PLAIN)); //istället för plain, typ "not bold"? För om man valt kursivt ska det vara kvar
+        }                                                                //och vice versa
+
+    }//GEN-LAST:event_btnBoldActionPerformed
+    //Just nu kan texten inte vara bold och italic samtidigt 
+    //och allting i textarean blir kursivt
+    private void btnItalicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItalicActionPerformed
+
+        if (btnItalic.isSelected()) {
+            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.ITALIC));
+
+        } else {
+            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.PLAIN));
+        }
+    }//GEN-LAST:event_btnItalicActionPerformed
+
+    private void tfRubrikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRubrikMouseClicked
+    tfRubrik.setText(null);
+    }//GEN-LAST:event_tfRubrikMouseClicked
+
+    private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
+    //        String rubrik = tfRubrik.getText();
+//        String inlaggText = taInlagg.getText();
+//        String kategori = (String) cbKategori.getSelectedItem();
+//        String ingress = inlaggText.substring(0, 100) + "...";
+//        String datum = "2017-01-27"; //dagens datum
+//        String inlaggId = "1"; //ska ske med autoIncrement
+//        String forfattare = "30"; //ska ju vara id för inloggad användare
+
+//        try {
+
+////          String id = Database.getAutoIncrement("inlagg", "inlaggid"); //Ger inlägget nästa lediga id för inlägg
+//            Database.insert("insert into inlagg (inlaggid, rubrik, ingress, heltext, datum, forfattare) values "
+//                    + "('" + inlaggId + "'," + "'" + rubrik + "'," + "'" + ingress + "'," + "'" + inlaggText + "'" + "," + " '" + datum + "'" + "," + "'" + forfattare + ")");
+//            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+//
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, "Någonting gick fel!");
+//
+//        }
+    }//GEN-LAST:event_btnPubliceraActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
      */
-   
-        
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAndra;
+    private javax.swing.JToggleButton btnBold;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JToggleButton btnItalic;
     private javax.swing.JButton btnPublicera;
+    private javax.swing.JComboBox<String> cbFont;
     private javax.swing.JComboBox<String> cbKategori;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JLabel lblRubrik;
+    private javax.swing.JComboBox<String> cbStorlek;
+    private javax.swing.JPanel pnlMain;
+    private javax.swing.JScrollPane scrPnltaInlagg;
     private javax.swing.JTextArea taInlagg;
     private javax.swing.JTextField tfRubrik;
     // End of variables declaration//GEN-END:variables
