@@ -7,7 +7,12 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
+import java.io.File;
 import java.sql.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.*;
 
 /**
  *
@@ -57,6 +62,11 @@ public class HemGUI extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Forskning");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btnProfil.setBackground(new java.awt.Color(255, 255, 255));
         btnProfil.setText("Profil");
@@ -219,7 +229,21 @@ public class HemGUI extends javax.swing.JFrame {
             login1.setVisible(true);
             login1.setLocationRelativeTo(null);
             dispose();
+        try {
+        File currentDirectory = new File("");
+        String mp3 = currentDirectory.getAbsolutePath() + "\\login.wav"; 
+        AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(mp3));
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioIn);
+        clip.start();
+        }
+        catch (Exception e) {
+        }
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

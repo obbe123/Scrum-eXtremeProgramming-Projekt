@@ -7,11 +7,9 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -24,7 +22,7 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
-        jButton1.requestFocusInWindow(); 
+        jButton1.requestFocusInWindow();       
     }
 
     /**
