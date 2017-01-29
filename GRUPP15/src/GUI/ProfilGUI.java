@@ -17,53 +17,41 @@ import javax.swing.ImageIcon;
  */
 public class ProfilGUI extends javax.swing.JFrame {
 
-    private Person personen;
+    private Person inloggadPerson;
 
     /**
      * Creates new form ProfilGUI
      */
-    public ProfilGUI(Person personen) {
+    public ProfilGUI(Person inloggadPerson) {
         initComponents();
-        this.personen = personen;
+        this.inloggadPerson = inloggadPerson;
 
-        String namn = personen.getFNamn() + " " + personen.getENamn();
+        String namn = inloggadPerson.getFNamn() + " " + inloggadPerson.getENamn();
         lblNamn.setText(namn);
 
-        String organisation = personen.getOrg();
+        String organisation = inloggadPerson.getOrg();
         lblVisaOrg.setText(organisation);
 
-        String titel = personen.getTitel();
+        String titel = inloggadPerson.getTitel();
         lblVisaTitel.setText(titel);
 
-        String epost = personen.getEmail();
+        String epost = inloggadPerson.getEmail();
         lblVisaEpost.setText(epost);
 
-        int telenr = personen.getTelefon();
+        int telenr = inloggadPerson.getTelefon();
         String tele = Integer.toString(telenr);
         lblVisaTel.setText("0" + tele);
 
-        String rum = "";
+        String rum = "1337";
         lblVisaRum.setText(rum);
 
-        String beskrivning = personen.getBeskrivning();
+        String beskrivning = inloggadPerson.getBeskrivning();
         lblVisaBeskrivning.setText(beskrivning);
 
-        String ovrigInfo = personen.getOvrigInfo();
+        String ovrigInfo = inloggadPerson.getOvrigInfo();
         lblVisaOvrigInfo.setText(ovrigInfo);
 
-        ResultSet rs = Database.sqlSelect("select FOTO from bilder where personid = " + personen.getId());
-        try {
-            if (rs.next()) {
-                byte[] img = rs.getBytes("FOTO");
-                ImageIcon image = new ImageIcon(img);
-                Image im = image.getImage();
-                Image myImg = im.getScaledInstance(lblBild.getWidth(), lblBild.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon newImage = new ImageIcon(myImg);
-                lblBild.setIcon(newImage);
-            }
-        } catch (Exception error) {
-
-        }
+        Database.uppdateraBild(lblBild, inloggadPerson);
     }
 
     /**
@@ -98,7 +86,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         btnRedigera = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(525, 430));
         setResizable(false);
 
@@ -176,7 +164,7 @@ public class ProfilGUI extends javax.swing.JFrame {
                 .addGroup(pInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblOrganisation)
-                        .addGap(18, 18, 18)
+                        .addGap(27, 27, 27)
                         .addComponent(lblVisaOrg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblTitel)
@@ -184,15 +172,15 @@ public class ProfilGUI extends javax.swing.JFrame {
                         .addComponent(lblVisaTitel, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblRum)
-                        .addGap(75, 75, 75)
+                        .addGap(76, 76, 76)
                         .addComponent(lblVisaRum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblEpost)
-                        .addGap(63, 63, 63)
+                        .addGap(66, 66, 66)
                         .addComponent(lblVisaEpost, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblTelefon)
-                        .addGap(55, 55, 55)
+                        .addGap(61, 61, 61)
                         .addComponent(lblVisaTel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -296,17 +284,14 @@ public class ProfilGUI extends javax.swing.JFrame {
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
         // Till RegideraProfilGUI
 
-        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI(personen);
+        RedigeraProfilGUI rpGUI = new RedigeraProfilGUI(inloggadPerson);
         rpGUI.setVisible(true);
         dispose();
 
     }//GEN-LAST:event_btnRedigeraActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        HemGUI hem = new HemGUI(personen);
-        hem.setVisible(true);
-        hem.setLocationRelativeTo(null);
-        dispose();
+         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
