@@ -7,11 +7,9 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -24,7 +22,7 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
-        jButton1.requestFocusInWindow(); 
+        jButton1.requestFocusInWindow();       
     }
 
     /**
@@ -41,9 +39,11 @@ public class LoginGUI extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        btnNewUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,6 +82,14 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        btnNewUser.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewUser.setText("Skapa ny användare.");
+        btnNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,14 +101,16 @@ public class LoginGUI extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(232, 232, 232)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(btnNewUser)))
                 .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(178, 178, 178))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +123,9 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,19 +150,21 @@ public class LoginGUI extends javax.swing.JFrame {
         try {
             
             String angEpost = jTextField1.getText();
-            ResultSet rs = Database.sqlFraga("SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'");
+            ResultSet rs = Database.sqlSelect("SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'");
             char[] pwNummer = jPasswordField1.getPassword();
             String realPassword = new String(pwNummer);
             String fNamn = "";
             String eNamn = "";
-            int pNummer = 0;
-            int tele = 0;
-            int id = 0;
             Boolean admin = null;
             String beskrivning = "";
             String ovrigt = "";
             String email = "";
             String losenord = "";
+            String titel = "";
+            String org = "";
+            int pNummer = 0;
+            int tele = 0;
+            int id = 0;
             
             while (rs.next()) {
                 id = rs.getInt("ANVANDARID");
@@ -163,9 +177,12 @@ public class LoginGUI extends javax.swing.JFrame {
                 beskrivning = rs.getString("BESKRIVNING");
                 ovrigt = rs.getString("OVRIG_INFO");
                 losenord = rs.getString("LOSENORD");
+                titel = rs.getString("TITEL");
+                org = rs.getString("ORGANISATION");
+                
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord);
+            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
             HemGUI hem = new HemGUI(inloggadPerson);
             hem.setVisible(true);
             hem.setLocationRelativeTo(null);
@@ -201,12 +218,17 @@ public class LoginGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordField1FocusLost
 
+    private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewUserActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNewUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
