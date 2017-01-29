@@ -17,27 +17,15 @@ import javax.swing.ImageIcon;
  */
 public class RedigeraProfilGUI extends javax.swing.JFrame {
 
-    private Person personen;
+    private Person inloggadPerson;
 
     /**
      * Creates new form RedigeraProfilGUI
      */
-    public RedigeraProfilGUI(Person personen) {
-        this.personen = personen;
+    public RedigeraProfilGUI(Person inloggadPerson) {
+        this.inloggadPerson = inloggadPerson;
         initComponents();
-        ResultSet rs = Database.sqlSelect("select FOTO from bilder where personid = " + personen.getId());
-        try {
-            if (rs.next()) {
-                byte[] img = rs.getBytes("FOTO");
-                ImageIcon image = new ImageIcon(img);
-                Image im = image.getImage();
-                Image myImg = im.getScaledInstance(lblBild.getWidth(), lblBild.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon newImage = new ImageIcon(myImg);
-                lblBild.setIcon(newImage);
-            }
-        } catch (Exception error) {
-
-        }
+        Database.uppdateraBild(lblBild, inloggadPerson);
     }
 
     /**
@@ -51,7 +39,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
 
         pAndraBild = new javax.swing.JPanel();
         lblBild = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrPnlTxtArea = new javax.swing.JScrollPane();
         taAndraBeskrivning = new javax.swing.JTextArea();
         pAndraInfo = new javax.swing.JPanel();
         lblTelefon = new javax.swing.JLabel();
@@ -65,7 +53,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         btnAndraBeskriv = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         pAndraBild.setBackground(new java.awt.Color(255, 255, 255));
@@ -74,7 +62,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
         pAndraBild.setLayout(pAndraBildLayout);
         pAndraBildLayout.setHorizontalGroup(
             pAndraBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBild, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+            .addComponent(lblBild, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pAndraBildLayout.setVerticalGroup(
             pAndraBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +71,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
 
         taAndraBeskrivning.setColumns(20);
         taAndraBeskrivning.setRows(5);
-        jScrollPane1.setViewportView(taAndraBeskrivning);
+        scrPnlTxtArea.setViewportView(taAndraBeskrivning);
 
         pAndraInfo.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -181,7 +169,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(scrPnlTxtArea)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnNyProfilB)
                                 .addGap(0, 0, Short.MAX_VALUE))
@@ -210,7 +198,7 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addComponent(btnNyProfilB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrPnlTxtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAndraBeskriv)
@@ -231,11 +219,13 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAndraActionPerformed
 
     private void btnNyProfilBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNyProfilBActionPerformed
-        Database.laggTillBild(personen);
+        if (Database.laggTillBild(inloggadPerson)) {
+            Database.uppdateraBild(lblBild, inloggadPerson);
+    }    
     }//GEN-LAST:event_btnNyProfilBActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        ProfilGUI pGUI = new ProfilGUI(personen);
+        ProfilGUI pGUI = new ProfilGUI(inloggadPerson);
         pGUI.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
@@ -246,13 +236,13 @@ public class RedigeraProfilGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnAndraBeskriv;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnNyProfilB;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBild;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblRum;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JPanel pAndraBild;
     private javax.swing.JPanel pAndraInfo;
+    private javax.swing.JScrollPane scrPnlTxtArea;
     private javax.swing.JTextArea taAndraBeskrivning;
     private javax.swing.JTextField tfAndraEpost;
     private javax.swing.JTextField tfAndraRum;
