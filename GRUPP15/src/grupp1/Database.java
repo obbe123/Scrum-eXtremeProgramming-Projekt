@@ -22,17 +22,15 @@ import javax.swing.JOptionPane;
  */
 public class Database {
 
-    public int test8william;
-
     public static Connection getDB() {
         String filePath = "";
         try {
             File currentDirectory = new File("");
-            filePath = currentDirectory.getAbsolutePath() + "\\GruppDB2";
-            String host = "jdbc:derby://localhost:1527/" + filePath;         //"jdbc:derby:gruppDB;create=true"  Detta skapar en embedded databas, behöver inte starta JavaDB
-            String uName = "APP";                                           //gör dock en ny databas? weird... måste testas.
-            String uPass = "masterkey";
-            Connection con = DriverManager.getConnection(host, uName, uPass);
+            filePath = currentDirectory.getAbsolutePath() + "\\GruppDB2";       //Detta skapar en embedded databas, behöver inte starta JavaDB manuellt
+            String host = "jdbc:derby:" + filePath;                             //För att visa DB tables - Services > Drivers > Högerklicka JavaDB(Embedded) > Connect Using...
+            String uName = "APP";                                               //Database: C:\...\gruppDB2
+            String uPass = "masterkey";                                         //User Name: APP
+            Connection con = DriverManager.getConnection(host, uName, uPass);   //Password: masterkey
             return con;
         } catch (SQLException error) {
             System.out.println(error.getMessage());
@@ -40,7 +38,7 @@ public class Database {
         }
     }
 
-    public static ResultSet sqlFraga(String fragan) {
+    public static ResultSet sqlSelect(String fragan) {
         try {
             Connection con = Database.getDB();
             Statement stmt = con.createStatement();
@@ -52,10 +50,21 @@ public class Database {
 
     }
 
+    public static void sqlInsert(String fragan) {
+        try {
+            Connection con = Database.getDB();
+            String query = fragan;
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.execute();
+        } catch (Exception e) {
+        }
+
+    }
+
     public static void laggTillBild(Person personen) {
         try {
 
-            ResultSet idKollTom = Database.sqlFraga("select PERSONID from bilder join ANVANDARE on PERSONID = ANVANDARE.ANVANDARID WHERE ANVANDARID = " + personen.getId());
+            ResultSet idKollTom = Database.sqlSelect("select PERSONID from bilder join ANVANDARE on PERSONID = ANVANDARE.ANVANDARID WHERE ANVANDARID = " + personen.getId());
             if (idKollTom.next()) {
                 try {
                     JFileChooser bildChooser = new JFileChooser();
@@ -73,7 +82,7 @@ public class Database {
                 }
             } else {
                 try {
-                    ResultSet bildDB = Database.sqlFraga("Select ID from bilder");
+                    ResultSet bildDB = Database.sqlSelect("Select ID from bilder");
                     int personid = personen.getId();
                     JFileChooser bildChooser = new JFileChooser();
                     bildChooser.setDialogTitle("Välj bild");
