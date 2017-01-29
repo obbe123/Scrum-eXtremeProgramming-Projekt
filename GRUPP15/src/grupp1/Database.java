@@ -5,6 +5,7 @@
  */
 package grupp1;
 
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +14,9 @@ import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,7 +64,8 @@ public class Database {
 
     }
 
-    public static void laggTillBild(Person personen) {
+    public static boolean laggTillBild(Person personen) {
+        boolean koll = false;
         try {
 
             ResultSet idKollTom = Database.sqlSelect("select PERSONID from bilder join ANVANDARE on PERSONID = ANVANDARE.ANVANDARID WHERE ANVANDARID = " + personen.getId());
@@ -75,9 +79,10 @@ public class Database {
                     PreparedStatement ps = con.prepareStatement("update BILDER set FOTO = (?) where PERSONID = " + personen.getId());
                     FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
                     ps.setBinaryStream(1, fin, fin.available());
-                    ps.executeUpdate();
+                    ps.execute();
                     JOptionPane.showMessageDialog(null, "Din bild har blivit uppdaterad!");
                     con.close();
+                    koll = true; 
                 } catch (Exception e) {
                 }
             } else {
@@ -100,15 +105,31 @@ public class Database {
                     FileInputStream fin = new FileInputStream(valdBild.getAbsolutePath());
                     ps.setBinaryStream(3, fin, fin.available());
                     ps.setInt(4, personid);
-                    int i = ps.executeUpdate();
+                    ps.execute();
                     JOptionPane.showMessageDialog(null, "En bild har blivit uppladdad!");
                     con.close();
+                    koll = true;
                 } catch (Exception e) {
                 }
             }
-
         } catch (Exception e) {
             System.out.println(e.getMessage() + "Oj, det blev visst lite fel! Försök igen.");
+        }
+                            return koll;
+    }
+    public static void uppdateraBild(JLabel enFuling, Person personen) {
+                ResultSet rs = Database.sqlSelect("select FOTO from bilder where personid = " + personen.getId());
+        try {
+            if (rs.next()) {
+                byte[] img = rs.getBytes("FOTO");
+                ImageIcon image = new ImageIcon(img);
+                Image im = image.getImage();
+                Image myImg = im.getScaledInstance(enFuling.getWidth(), enFuling.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon newImage = new ImageIcon(myImg);
+                enFuling.setIcon(newImage);
+            }
+        } catch (Exception error) {
+
         }
     }
 }
