@@ -44,12 +44,16 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlMeny" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Component id="pnlMeny2" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="scrPnlTxtArea" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="pnlMeny" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="pnlMeny2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="pnlTextArea" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -57,11 +61,12 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlMeny" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrPnlTxtArea" pref="476" max="32767" attributes="0"/>
                       <Component id="pnlMeny2" max="32767" attributes="0"/>
+                      <Component id="pnlTextArea" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -83,21 +88,24 @@
                       <Component id="btnForskning" min="-2" pref="94" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnProfil" min="-2" pref="94" max="-2" attributes="0"/>
-                      <EmptySpace pref="463" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblDatum" min="-2" pref="397" max="-2" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnHem" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnUtbildning" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnForskning" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnProfil" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnProfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnForskning" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnUtbildning" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnHem" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDatum" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -141,6 +149,8 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProfilActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblDatum">
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="pnlMeny2">
@@ -151,9 +161,9 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnSkapaInlagg" alignment="1" pref="125" max="32767" attributes="0"/>
+                          <Component id="btnSkapaInlagg" alignment="1" pref="123" max="32767" attributes="0"/>
                           <Component id="btnStartsida" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnExit" alignment="0" pref="125" max="32767" attributes="0"/>
+                          <Component id="btnExit" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -209,17 +219,179 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JScrollPane" name="scrPnlTxtArea">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
+        <Container class="javax.swing.JPanel" name="pnlTextArea">
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblRubrik1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblRubrik2" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblRubrik3" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblForfattare1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblDatum2" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblDatum3" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblDatum1" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblForfattare2" min="-2" pref="201" max="-2" attributes="0"/>
+                          <Component id="lblForfattare3" min="-2" pref="201" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrPnlTextPane3" min="-2" pref="353" max="-2" attributes="0"/>
+                          <Component id="scrPnlTextPane2" min="-2" pref="353" max="-2" attributes="0"/>
+                          <Component id="scrPnlTextPane1" min="-2" pref="353" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrPnlTextPane1" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblRubrik1" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblDatum1" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblForfattare1" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrPnlTextPane3" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblRubrik3" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblDatum2" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="lblForfattare2" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrPnlTextPane2" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblRubrik2" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblDatum3" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblForfattare3" min="-2" pref="28" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="txtInlagg">
+            <Container class="javax.swing.JScrollPane" name="scrPnlTextPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="txtPnlInlagg1">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="scrPnlTextPane2">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="txtPnlInlagg2">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="scrPnlTextPane3">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="txtPnlInlagg3">
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblRubrik1">
               <Properties>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="rows" type="int" value="5"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 1 rubrik h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRubrik2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 3 rubrik h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRubrik3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 2 rubrik h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblForfattare1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 1 f&#xf6;rfattare h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDatum2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 2 datum h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDatum3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 3 datum h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDatum1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 1 datum h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblForfattare2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 2 f&#xf6;rfattare h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblForfattare3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Inl&#xe4;gg 3 f&#xf6;rfattare h&#xe4;r h&#xe4;r h&#xe4;r h&#xe4;r"/>
               </Properties>
             </Component>
           </SubComponents>
