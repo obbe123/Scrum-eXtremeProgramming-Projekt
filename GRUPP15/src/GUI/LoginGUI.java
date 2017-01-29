@@ -7,6 +7,7 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -22,7 +23,8 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
-        btnLogIn.requestFocusInWindow();       
+        btnLogIn.requestFocusInWindow();
+        getRootPane().setDefaultButton(btnLogIn);
     }
 
     /**
@@ -79,6 +81,11 @@ public class LoginGUI extends javax.swing.JFrame {
         btnLogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogInActionPerformed(evt);
+            }
+        });
+        btnLogIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLogInKeyPressed(evt);
             }
         });
 
@@ -219,6 +226,11 @@ public class LoginGUI extends javax.swing.JFrame {
     private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNewUserActionPerformed
+
+    private void btnLogInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLogInKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+        }
+    }//GEN-LAST:event_btnLogInKeyPressed
 
     /**
      * @param args the command line arguments
