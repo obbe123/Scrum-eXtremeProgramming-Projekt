@@ -360,41 +360,42 @@ public class LoginGUI extends javax.swing.JFrame {
             String eNamn = "";
             Boolean admin = null;
             String beskrivning = "";
-            String ovrigt = "";
             String email = "";
             String losenord = "";
             String titel = "";
             String org = "";
             int pNummer = 0;
-            int tele = 0;
+            String tele = "";
             int id = 0;
+            String rum = "";
 
             while (rs.next()) {
                 id = rs.getInt("ANVANDARID");
                 fNamn = rs.getString("F_NAMN");
                 eNamn = rs.getString("E_NAMN");
                 pNummer = rs.getInt("PNUMMER");
-                tele = 0 + rs.getInt("TELEFON");
+                tele = rs.getString("TELEFON");
                 email = rs.getString("ANVANDAR_EPOST");
                 admin = rs.getBoolean("admin");
                 beskrivning = rs.getString("BESKRIVNING");
-                ovrigt = rs.getString("OVRIG_INFO");
+                rum = rs.getString("kontors_rum");
                 losenord = rs.getString("LOSENORD");
                 titel = rs.getString("TITEL");
                 org = rs.getString("ORGANISATION");
+                rum = rs.getString("kontors_rum");
 
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-                Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
+                Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, email, admin, beskrivning, losenord, titel, org, tele, rum);
                 HemGUI hem = new HemGUI(inloggadPerson);
                 hem.setVisible(true);
                 hem.setLocationRelativeTo(null);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
+                JOptionPane.showMessageDialog(null, "Fel1 Användare/lösenord");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
+            JOptionPane.showMessageDialog(null, "Fel2 Användare/lösenord");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
 

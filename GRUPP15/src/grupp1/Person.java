@@ -6,17 +6,17 @@ public class Person {
     private String fNamn;
     private String eNamn;
     private int pNummer;
-    private int telefon;
+    private String telefon;
     private String email;
     private boolean admin;
     private String beskrivning;
-    private String ovrigInfo;
     private String losenord;
     private String titel;
     private String org;
+    private String rum;
 
-    public Person(int id, String fNamn, String eNamn, int pNummer, int telefon, String email,
-            boolean admin, String beskrivning, String ovrigt, String losenord, String titel, String organisation) {
+    public Person(int id, String fNamn, String eNamn, int pNummer, String email,
+            boolean admin, String beskrivning, String losenord, String titel, String organisation, String telefon, String rum) {
 
         this.id = id;
         this.fNamn = fNamn;
@@ -26,10 +26,10 @@ public class Person {
         this.email = email;
         this.admin = admin;
         this.beskrivning = beskrivning;
-        this.ovrigInfo = ovrigt;
         this.losenord = losenord;
         this.titel = titel;
         this.org = organisation;
+        this.rum = rum;
     }
 
     public int getId() {
@@ -44,7 +44,7 @@ public class Person {
         return eNamn;
     }
 
-    public int getTelefon() {
+    public String getTelefon() {
         return telefon;
     }
 
@@ -64,7 +64,7 @@ public class Person {
     public String getBeskrivning() {
         return beskrivning;
     }
-    public String getOvrigInfo() {
-        return ovrigInfo;
+    public String getKontorsRum() {
+        return rum;
     }
 }
