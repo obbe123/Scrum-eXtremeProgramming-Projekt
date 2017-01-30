@@ -7,6 +7,8 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
+import java.awt.CardLayout;
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -22,7 +24,8 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
-        btnLogIn.requestFocusInWindow();       
+        btnLogIn.requestFocusInWindow();
+        getRootPane().setDefaultButton(btnLogIn);
     }
 
     /**
@@ -34,16 +37,37 @@ public class LoginGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pnlSuperMain = new javax.swing.JPanel();
         pnlMain = new javax.swing.JPanel();
         lblBild = new javax.swing.JLabel();
         txtFieldAnvNamn = new javax.swing.JTextField();
         jPwField = new javax.swing.JPasswordField();
         btnLogIn = new javax.swing.JButton();
         btnNewUser = new javax.swing.JButton();
+        pnlNyAnv = new javax.swing.JPanel();
+        txtFieldFornamn = new javax.swing.JTextField();
+        txtFieldEfternamn = new javax.swing.JTextField();
+        txtFieldPnummer = new javax.swing.JTextField();
+        txtFieldTelefon = new javax.swing.JTextField();
+        txtFieldEpost = new javax.swing.JTextField();
+        jPwField1 = new javax.swing.JPasswordField();
+        lblFornamn = new javax.swing.JLabel();
+        lblEfternamn = new javax.swing.JLabel();
+        lblPnummer = new javax.swing.JLabel();
+        lblTelefon = new javax.swing.JLabel();
+        lblEpost = new javax.swing.JLabel();
+        lblPw = new javax.swing.JLabel();
+        lblPnummerExempel = new javax.swing.JLabel();
+        lblEpostNotis = new javax.swing.JLabel();
+        lblBild1 = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
+
+        pnlSuperMain.setLayout(new java.awt.CardLayout());
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -81,6 +105,11 @@ public class LoginGUI extends javax.swing.JFrame {
                 btnLogInActionPerformed(evt);
             }
         });
+        btnLogIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnLogInKeyPressed(evt);
+            }
+        });
 
         btnNewUser.setBackground(new java.awt.Color(255, 255, 255));
         btnNewUser.setText("Skapa ny användare.");
@@ -97,9 +126,6 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblBild))
-                    .addGroup(pnlMainLayout.createSequentialGroup()
                         .addGap(214, 214, 214)
                         .addComponent(btnLogIn))
                     .addGroup(pnlMainLayout.createSequentialGroup()
@@ -107,46 +133,227 @@ public class LoginGUI extends javax.swing.JFrame {
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPwField, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtFieldAnvNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                            .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlMainLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(lblBild)))
+                .addGap(55, 55, 55))
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(27, 27, 27)
                 .addComponent(lblBild)
-                .addGap(29, 29, 29)
+                .addGap(46, 46, 46)
                 .addComponent(txtFieldAnvNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPwField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogIn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addGap(65, 65, 65)
                 .addComponent(btnNewUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        pnlSuperMain.add(pnlMain, "pnlMain");
+
+        pnlNyAnv.setBackground(new java.awt.Color(255, 255, 255));
+        pnlNyAnv.setPreferredSize(new java.awt.Dimension(525, 393));
+
+        txtFieldFornamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldFornamnActionPerformed(evt);
+            }
+        });
+
+        txtFieldEfternamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldEfternamnActionPerformed(evt);
+            }
+        });
+
+        txtFieldPnummer.setText("(exempelvis: 950225)");
+        txtFieldPnummer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldPnummerActionPerformed(evt);
+            }
+        });
+
+        txtFieldTelefon.setText("(exempelvis: 0701234567)");
+        txtFieldTelefon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldTelefonActionPerformed(evt);
+            }
+        });
+
+        txtFieldEpost.setText("example@gmail.com");
+        txtFieldEpost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFieldEpostActionPerformed(evt);
+            }
+        });
+
+        lblFornamn.setText("Ange förnamn");
+
+        lblEfternamn.setText("Ange efternamn");
+
+        lblPnummer.setText("Ange personnummer");
+
+        lblTelefon.setText("Ange telefonnummer");
+
+        lblEpost.setText("Ange epost");
+
+        lblPw.setText("Ange lösenord");
+
+        lblPnummerExempel.setText("(ååmmdd)");
+
+        lblEpostNotis.setText("(Epost blir ditt användarnamn)");
+
+        lblBild1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/ologo.png"))); // NOI18N
+
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setText("Tillbaka");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Skapa användare");
+
+        javax.swing.GroupLayout pnlNyAnvLayout = new javax.swing.GroupLayout(pnlNyAnv);
+        pnlNyAnv.setLayout(pnlNyAnvLayout);
+        pnlNyAnvLayout.setHorizontalGroup(
+            pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEpost)
+                                    .addComponent(lblTelefon)
+                                    .addComponent(lblPw))
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                                .addComponent(lblPnummer)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblEfternamn)
+                                    .addComponent(lblFornamn))
+                                .addGap(33, 33, 33)))
+                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtFieldEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldPnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFieldEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPwField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPnummerExempel)
+                            .addComponent(lblEpostNotis))
+                        .addContainerGap(63, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblBild1)
+                .addGap(63, 63, 63))
+        );
+        pnlNyAnvLayout.setVerticalGroup(
+            pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblBild1)
+                .addGap(27, 27, 27)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFornamn)
+                    .addComponent(txtFieldFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEfternamn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldPnummer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPnummer)
+                    .addComponent(lblPnummerExempel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTelefon))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldEpost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEpost)
+                    .addComponent(lblEpostNotis))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jPwField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPw))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExit)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlSuperMain.add(pnlNyAnv, "pnlNyAnv");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlSuperMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlSuperMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldAnvNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        getLayout("pnlMain");
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void txtFieldEpostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEpostActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldAnvNamnActionPerformed
+    }//GEN-LAST:event_txtFieldEpostActionPerformed
+
+    private void txtFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldTelefonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldTelefonActionPerformed
+
+    private void txtFieldPnummerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldPnummerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldPnummerActionPerformed
+
+    private void txtFieldEfternamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldEfternamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldEfternamnActionPerformed
+
+    private void txtFieldFornamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldFornamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldFornamnActionPerformed
+
+    private void btnLogInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLogInKeyPressed
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER) {
+        }
+    }//GEN-LAST:event_btnLogInKeyPressed
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         try {
-            
+
             String angEpost = txtFieldAnvNamn.getText();
             ResultSet rs = Database.sqlSelect("SELECT * FROM ANVANDARE where ANVANDAR_EPOST = '" + angEpost + "'");
             char[] pwNummer = jPwField.getPassword();
@@ -163,7 +370,7 @@ public class LoginGUI extends javax.swing.JFrame {
             int pNummer = 0;
             int tele = 0;
             int id = 0;
-            
+
             while (rs.next()) {
                 id = rs.getInt("ANVANDARID");
                 fNamn = rs.getString("F_NAMN");
@@ -177,60 +384,87 @@ public class LoginGUI extends javax.swing.JFrame {
                 losenord = rs.getString("LOSENORD");
                 titel = rs.getString("TITEL");
                 org = rs.getString("ORGANISATION");
-                
+
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-            Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
-            HemGUI hem = new HemGUI(inloggadPerson);
-            hem.setVisible(true);
-            hem.setLocationRelativeTo(null);
-            dispose();
+                Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
+                HemGUI hem = new HemGUI(inloggadPerson);
+                hem.setVisible(true);
+                hem.setLocationRelativeTo(null);
+                dispose();
             } else {
-            JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");    
+                JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
         }
-        
     }//GEN-LAST:event_btnLogInActionPerformed
 
-    private void txtFieldAnvNamnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnFocusGained
-       if(txtFieldAnvNamn.getText().contains("Användarnamn")){
-       txtFieldAnvNamn.setText("");
-       }
-    }//GEN-LAST:event_txtFieldAnvNamnFocusGained
-
-    private void txtFieldAnvNamnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnFocusLost
-        if(txtFieldAnvNamn.getText().isEmpty()){
-        txtFieldAnvNamn.setText("Användarnamn");
+    private void jPwFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPwFieldFocusLost
+        if(jPwField.getText().isEmpty()){
+            jPwField.setText("Losenord");
         }
-    }//GEN-LAST:event_txtFieldAnvNamnFocusLost
+    }//GEN-LAST:event_jPwFieldFocusLost
 
     private void jPwFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPwFieldFocusGained
         jPwField.setText("");
     }//GEN-LAST:event_jPwFieldFocusGained
 
-    private void jPwFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPwFieldFocusLost
-        if(jPwField.getText().isEmpty()){
-        jPwField.setText("Losenord");
+    private void txtFieldAnvNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFieldAnvNamnActionPerformed
+
+    private void txtFieldAnvNamnFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnFocusLost
+        if(txtFieldAnvNamn.getText().isEmpty()){
+            txtFieldAnvNamn.setText("Användarnamn");
         }
-    }//GEN-LAST:event_jPwFieldFocusLost
+    }//GEN-LAST:event_txtFieldAnvNamnFocusLost
+
+    private void txtFieldAnvNamnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFieldAnvNamnFocusGained
+        if(txtFieldAnvNamn.getText().contains("Användarnamn")){
+            txtFieldAnvNamn.setText("");
+        }
+    }//GEN-LAST:event_txtFieldAnvNamnFocusGained
 
     private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewUserActionPerformed
-        // TODO add your handling code here:
+        getLayout("pnlNyAnv");
     }//GEN-LAST:event_btnNewUserActionPerformed
+    public void getLayout(String panelName) {//Denna metods jobb är att initialisera, och visa olika containers beroende på vilken funktion/knapp som användaren vill utnyttja.
+                                              //Metoden tar endast emot containerns/panelens namn - och visar den.
+        CardLayout card = (CardLayout) pnlSuperMain.getLayout();
+        card.show(pnlSuperMain, panelName);
 
+    }
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogIn;
     private javax.swing.JButton btnNewUser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPasswordField jPwField;
+    private javax.swing.JPasswordField jPwField1;
     private javax.swing.JLabel lblBild;
+    private javax.swing.JLabel lblBild1;
+    private javax.swing.JLabel lblEfternamn;
+    private javax.swing.JLabel lblEpost;
+    private javax.swing.JLabel lblEpostNotis;
+    private javax.swing.JLabel lblFornamn;
+    private javax.swing.JLabel lblPnummer;
+    private javax.swing.JLabel lblPnummerExempel;
+    private javax.swing.JLabel lblPw;
+    private javax.swing.JLabel lblTelefon;
     private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlNyAnv;
+    private javax.swing.JPanel pnlSuperMain;
     private javax.swing.JTextField txtFieldAnvNamn;
+    private javax.swing.JTextField txtFieldEfternamn;
+    private javax.swing.JTextField txtFieldEpost;
+    private javax.swing.JTextField txtFieldFornamn;
+    private javax.swing.JTextField txtFieldPnummer;
+    private javax.swing.JTextField txtFieldTelefon;
     // End of variables declaration//GEN-END:variables
 }
