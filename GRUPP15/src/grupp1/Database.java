@@ -56,9 +56,8 @@ public class Database {
     public static void sqlInsert(String fragan) {
         try {
             Connection con = Database.getDB();
-            String query = fragan;
-            PreparedStatement stmt = con.prepareStatement(query);
-            stmt.execute();
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(fragan);
         } catch (Exception e) {
         }
 
@@ -132,4 +131,53 @@ public class Database {
 
         }
     }
+        public static void uppdateraLosenord(String losenord, Person inloggadPerson) {
+        try {
+                    Connection con = Database.getDB();
+                    String fragan = ("update anvandare set loseonord = '" + losenord + "' where anvandarid = " + inloggadPerson.getId());
+                    sqlInsert(fragan);
+                    JOptionPane.showMessageDialog(null, "Ditt lösenord har blivit uppdaterat till: " + losenord);
+                    con.close();
+            }
+             catch (Exception error) {
+
+        }
+    }
+public static void uppdateraTelefon(String telefon, Person inloggadPerson) {
+        try {
+                    Connection con = Database.getDB();
+                    String fragan = ("update anvandare set telefon = '" + telefon + "' where anvandarid = " + inloggadPerson.getId());
+                    sqlInsert(fragan);
+                    JOptionPane.showMessageDialog(null, "Ditt telefonnummer har blivit uppdaterat till:" + telefon);
+                    con.close();
+            }
+             catch (Exception error) {
+
+        }
+    }
+public static void uppdateraEpost(String epost, Person inloggadPerson) {
+        try {
+                    Connection con = Database.getDB();
+                    String fragan = ("update anvandare set anvandar_epost = '" + epost + "' where anvandarid = " + inloggadPerson.getId());
+                    sqlInsert(fragan);
+                    JOptionPane.showMessageDialog(null, "Din epost har blivit uppdaterad till: " + epost);
+                    con.close();
+            }
+             catch (Exception error) {
+
+        }
+    }
+public static void uppdateraRum(String rum, Person inloggadPerson) {
+        try {
+                    Connection con = Database.getDB();
+                    String fragan = ("update anvandare set kontors_rum = '" + rum + "' where anvandarid = " + inloggadPerson.getId());
+                    sqlInsert(fragan);
+                    JOptionPane.showMessageDialog(null, "Din epost har blivit uppdaterad till: " + rum);
+                    con.close();
+            }
+             catch (Exception error) {
+
+        }
+    }
+
 }
