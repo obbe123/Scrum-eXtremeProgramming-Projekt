@@ -38,9 +38,8 @@ public class ProfilGUI extends javax.swing.JFrame {
         String epost = inloggadPerson.getEmail();
         lblVisaEpost.setText(epost);
 
-        int telenr = inloggadPerson.getTelefon();
-        String tele = Integer.toString(telenr);
-        lblVisaTel.setText("0" + tele);
+        String telenr = inloggadPerson.getTelefon();
+        lblVisaTel.setText(telenr);
 
         String rum = "1337";
         lblVisaRum.setText(rum);
