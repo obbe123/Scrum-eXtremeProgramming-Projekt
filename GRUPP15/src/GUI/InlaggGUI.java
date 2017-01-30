@@ -8,6 +8,11 @@ package GUI;
 import java.awt.Font;
 import grupp1.Database;
 import grupp1.Person;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,8 +32,7 @@ private Person inloggadPerson;
         cbFont.addItem("Arial");
         cbStorlek.addItem("11");
         cbStorlek.addItem("16");
-        cbKategori.addItem("Utbildning");
-        cbKategori.addItem("Forskning");
+        
     }
 
     /**
@@ -76,6 +80,8 @@ private Person inloggadPerson;
                 btnPubliceraActionPerformed(evt);
             }
         });
+
+        cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Utbildning", "Forskning" }));
 
         btnBold.setBackground(new java.awt.Color(255, 255, 255));
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -217,25 +223,42 @@ private Person inloggadPerson;
     }//GEN-LAST:event_tfRubrikMouseClicked
 
     private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
-    //        String rubrik = tfRubrik.getText();
-//        String inlaggText = taInlagg.getText();
-//        String kategori = (String) cbKategori.getSelectedItem();
-//        String ingress = inlaggText.substring(0, 100) + "...";
-//        String datum = "2017-01-27"; //dagens datum
-//        String inlaggId = "1"; //ska ske med autoIncrement
-//        String forfattare = "30"; //ska ju vara id för inloggad användare
+     String rubrik = tfRubrik.getText();
+        String inlaggText = taInlagg.getText();
+        String kategori = cbKategori.getSelectedItem().toString();
+        boolean utbildningVald = false;
+        boolean forskningVald = false;
 
-//        try {
+        if (kategori == "Utbildning") {
+            utbildningVald = true;
+        } else if (kategori == "Forskning") {
+            forskningVald = true;
+
+        }
+
+        String ingress = inlaggText.substring(0, 10);
+        Calendar dagensDatum = Calendar.getInstance();
+        Date datum = dagensDatum.getTime(); //dagens datum, fungerar inte just nu
+        System.out.println(datum.toString());
+
+        String inlaggId = "18"; //ska ske med autoIncrement?
+        int forfattare = inloggadPerson.getId();
+
+        try {
 
 ////          String id = Database.getAutoIncrement("inlagg", "inlaggid"); //Ger inlägget nästa lediga id för inlägg
-//            Database.insert("insert into inlagg (inlaggid, rubrik, ingress, heltext, datum, forfattare) values "
-//                    + "('" + inlaggId + "'," + "'" + rubrik + "'," + "'" + ingress + "'," + "'" + inlaggText + "'" + "," + " '" + datum + "'" + "," + "'" + forfattare + ")");
-//            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, "Någonting gick fel!");
-//
-//        }
+//Använder inte insert metoden just nu
+            Connection con = Database.getDB();
+            Statement stm = con.createStatement();
+            stm.executeUpdate("insert into INLAGG (INLAGGID, RUBRIK, INGRESS, HELTEXT, FORFATTARE, FORSKNING, UTBILDNING) values "
+                    + " (" + inlaggId + ",'" + rubrik + "','" + ingress + "','" + inlaggText + "'," + forfattare + "," + forskningVald + "," + utbildningVald + ")");
+
+            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Någonting gick fel!" + ex);
+
+        }
     }//GEN-LAST:event_btnPubliceraActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
