@@ -26,16 +26,16 @@ public class HemGUI extends javax.swing.JFrame {
     private Person inloggadPerson;
 
     public HemGUI(Person inloggadPerson) {
-        this.inloggadPerson = inloggadPerson;
         initComponents();
-        txtPnlInlagg1.setEditable(false);
-        txtPnlInlagg2.setEditable(false);
-        txtPnlInlagg3.setEditable(false);
+        this.inloggadPerson = inloggadPerson;
         Calendar cal = Calendar.getInstance();
-        lblDatum.setText("Visar: Startsida - Dagens datum är: " + cal.getTime().toString());
+        lblDatum.setText("Startsida - Dagens datum är: " + cal.getTime().toString());
         uppdateraDatum();
+        setIngressText(1, txtPnlInlagg1);
+                setIngressText(2, txtPnlInlagg2);
+                        setIngressText(3, txtPnlInlagg3);
+                                                setIngressText(4, txtPnlInlagg4);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,21 +58,16 @@ public class HemGUI extends javax.swing.JFrame {
         btnSkapaInlagg = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         pnlTextArea = new javax.swing.JPanel();
+        pnlIngress = new javax.swing.JPanel();
         scrPnlTextPane1 = new javax.swing.JScrollPane();
         txtPnlInlagg1 = new javax.swing.JTextPane();
         scrPnlTextPane2 = new javax.swing.JScrollPane();
         txtPnlInlagg2 = new javax.swing.JTextPane();
         scrPnlTextPane3 = new javax.swing.JScrollPane();
         txtPnlInlagg3 = new javax.swing.JTextPane();
-        lblRubrik1 = new javax.swing.JLabel();
-        lblRubrik2 = new javax.swing.JLabel();
-        lblRubrik3 = new javax.swing.JLabel();
-        lblForfattare1 = new javax.swing.JLabel();
-        lblDatum2 = new javax.swing.JLabel();
-        lblDatum3 = new javax.swing.JLabel();
-        lblDatum1 = new javax.swing.JLabel();
-        lblForfattare2 = new javax.swing.JLabel();
-        lblForfattare3 = new javax.swing.JLabel();
+        scrPnlTextPane4 = new javax.swing.JScrollPane();
+        txtPnlInlagg4 = new javax.swing.JTextPane();
+        pnlHeltext = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -116,7 +111,7 @@ public class HemGUI extends javax.swing.JFrame {
                 .addComponent(btnProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMenyLayout.setVerticalGroup(
             pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,7 +157,7 @@ public class HemGUI extends javax.swing.JFrame {
             .addGroup(pnlMeny2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSkapaInlagg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(btnSkapaInlagg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStartsida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -179,94 +174,67 @@ public class HemGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnlTextArea.setLayout(new java.awt.CardLayout());
+
+        txtPnlInlagg1.setEditable(false);
+        txtPnlInlagg1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         scrPnlTextPane1.setViewportView(txtPnlInlagg1);
 
+        txtPnlInlagg2.setEditable(false);
+        txtPnlInlagg2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         scrPnlTextPane2.setViewportView(txtPnlInlagg2);
 
+        txtPnlInlagg3.setEditable(false);
+        txtPnlInlagg3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         scrPnlTextPane3.setViewportView(txtPnlInlagg3);
 
-        lblRubrik1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblRubrik1.setText("Inlägg 1 rubrik här här här här här");
+        txtPnlInlagg4.setEditable(false);
+        txtPnlInlagg4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        scrPnlTextPane4.setViewportView(txtPnlInlagg4);
 
-        lblRubrik2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblRubrik2.setText("Inlägg 3 rubrik här här här här här");
-
-        lblRubrik3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblRubrik3.setText("Inlägg 2 rubrik här här här här här");
-
-        lblForfattare1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblForfattare1.setText("Inlägg 1 författare här här här här");
-
-        lblDatum2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDatum2.setText("Inlägg 2 datum här här här här här");
-
-        lblDatum3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDatum3.setText("Inlägg 3 datum här här här här här");
-
-        lblDatum1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblDatum1.setText("Inlägg 1 datum här här här här här");
-
-        lblForfattare2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblForfattare2.setText("Inlägg 2 författare här här här här");
-
-        lblForfattare3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblForfattare3.setText("Inlägg 3 författare här här här här");
-
-        javax.swing.GroupLayout pnlTextAreaLayout = new javax.swing.GroupLayout(pnlTextArea);
-        pnlTextArea.setLayout(pnlTextAreaLayout);
-        pnlTextAreaLayout.setHorizontalGroup(
-            pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTextAreaLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRubrik1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRubrik2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRubrik3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblForfattare1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDatum2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDatum3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDatum1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblForfattare2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblForfattare3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
-        );
-        pnlTextAreaLayout.setVerticalGroup(
-            pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlTextAreaLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlIngressLayout = new javax.swing.GroupLayout(pnlIngress);
+        pnlIngress.setLayout(pnlIngressLayout);
+        pnlIngressLayout.setHorizontalGroup(
+            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIngressLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlTextAreaLayout.createSequentialGroup()
-                        .addComponent(lblRubrik1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDatum1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblForfattare1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlTextAreaLayout.createSequentialGroup()
-                        .addComponent(lblRubrik3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDatum2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblForfattare2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlTextAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlTextAreaLayout.createSequentialGroup()
-                        .addComponent(lblRubrik2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblDatum3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblForfattare3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+        pnlIngressLayout.setVerticalGroup(
+            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIngressLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
+        );
+
+        pnlTextArea.add(pnlIngress, "card5");
+
+        javax.swing.GroupLayout pnlHeltextLayout = new javax.swing.GroupLayout(pnlHeltext);
+        pnlHeltext.setLayout(pnlHeltextLayout);
+        pnlHeltextLayout.setHorizontalGroup(
+            pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 715, Short.MAX_VALUE)
+        );
+        pnlHeltextLayout.setVerticalGroup(
+            pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        pnlTextArea.add(pnlHeltext, "card3");
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
@@ -312,7 +280,7 @@ public class HemGUI extends javax.swing.JFrame {
 
         ProfilGUI pGUI = new ProfilGUI(inloggadPerson);
         pGUI.setVisible(true);
-        
+
 //        try {
 //            Connection con = Database.getDB();
 //            Statement stmt = con.createStatement();
@@ -330,20 +298,7 @@ public class HemGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProfilActionPerformed
 
     private void btnStartsidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartsidaActionPerformed
-        txtPnlInlagg1.setText("Du är inloggad som " + inloggadPerson.getFNamn() + " " 
-        + inloggadPerson.getENamn() + "\nDitt telefonnummer är: " + inloggadPerson.getTelefon()
-        + "\nDin epost är: " + inloggadPerson.getEmail()
-        + "\nDin titel är: " + inloggadPerson.getTitel());
-        
-        txtPnlInlagg2.setText("Du är inloggad som " + inloggadPerson.getFNamn() + " " 
-        + inloggadPerson.getENamn() + "\nDitt telefonnr: " + inloggadPerson.getTelefon()
-        + "\nDin epost är: " + inloggadPerson.getEmail()
-        + "\nDin titel är: " + inloggadPerson.getTitel());
-        
-        txtPnlInlagg3.setText("Du är inloggad som " + inloggadPerson.getFNamn() + " " 
-        + inloggadPerson.getENamn() + "\nDitt telefonnr: " + inloggadPerson.getTelefon()
-        + "\nDin epost är: " + inloggadPerson.getEmail()
-        + "\nDin titel är: " + inloggadPerson.getTitel());
+
     }//GEN-LAST:event_btnStartsidaActionPerformed
 
     private void btnSkapaInlaggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaInlaggActionPerformed
@@ -352,19 +307,18 @@ public class HemGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSkapaInlaggActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-            LoginGUI login1 = new LoginGUI();
-            login1.setVisible(true);
-            login1.setLocationRelativeTo(null);
-            dispose();
+        LoginGUI login1 = new LoginGUI();
+        login1.setVisible(true);
+        login1.setLocationRelativeTo(null);
+        dispose();
         try {
-        File currentDirectory = new File("");
-        String mp3 = currentDirectory.getAbsolutePath() + "\\login.wav"; 
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(mp3));
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
-        clip.start();
-        }
-        catch (Exception e) {
+            File currentDirectory = new File("");
+            String mp3 = currentDirectory.getAbsolutePath() + "\\login.wav";
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(mp3));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioIn);
+            clip.start();
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -372,14 +326,31 @@ public class HemGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnForskningActionPerformed
     public void uppdateraDatum() {
-          ActionListener uppgift = new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-        Calendar cal = Calendar.getInstance();
-        lblDatum.setText("Visar: Startsida - Dagens datum är: " + cal.getTime().toString());
+        ActionListener uppgift = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                Calendar cal = Calendar.getInstance();
+                lblDatum.setText("Visar: Startsida - Dagens datum är: " + cal.getTime().toString());
 
-      }
-  };   
-          new Timer(1000, uppgift).start();
+            }
+        };
+        new Timer(1000, uppgift).start();
+    }
+
+    public void setIngressText(int tick, JTextPane txtPanel) {
+        int i = 0;
+        try {
+            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG");
+            while (inlagg.next() && i < tick) {
+
+                String rubrik = inlagg.getString("RUBRIK");
+                String ingress = inlagg.getString("INGRESS");
+                String datum = inlagg.getString("DATUM");
+                txtPanel.setText(rubrik + "\n" + ingress + "\n" + datum);
+                i++;
+            }
+        } catch (Exception e) {
+
+        }
     }
     /**
      * @param args the command line arguments
@@ -394,15 +365,8 @@ public class HemGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnStartsida;
     private javax.swing.JButton btnUtbildning;
     private javax.swing.JLabel lblDatum;
-    private javax.swing.JLabel lblDatum1;
-    private javax.swing.JLabel lblDatum2;
-    private javax.swing.JLabel lblDatum3;
-    private javax.swing.JLabel lblForfattare1;
-    private javax.swing.JLabel lblForfattare2;
-    private javax.swing.JLabel lblForfattare3;
-    private javax.swing.JLabel lblRubrik1;
-    private javax.swing.JLabel lblRubrik2;
-    private javax.swing.JLabel lblRubrik3;
+    private javax.swing.JPanel pnlHeltext;
+    private javax.swing.JPanel pnlIngress;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlMeny;
     private javax.swing.JPanel pnlMeny2;
@@ -410,8 +374,10 @@ public class HemGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrPnlTextPane1;
     private javax.swing.JScrollPane scrPnlTextPane2;
     private javax.swing.JScrollPane scrPnlTextPane3;
+    private javax.swing.JScrollPane scrPnlTextPane4;
     private javax.swing.JTextPane txtPnlInlagg1;
     private javax.swing.JTextPane txtPnlInlagg2;
     private javax.swing.JTextPane txtPnlInlagg3;
+    private javax.swing.JTextPane txtPnlInlagg4;
     // End of variables declaration//GEN-END:variables
 }
