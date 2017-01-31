@@ -10,6 +10,7 @@ import grupp1.Person;
 import java.awt.Image;
 import java.sql.ResultSet;
 import javax.swing.ImageIcon;
+import javax.swing.JTextPane;
 
 /**
  *
@@ -79,8 +80,17 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblInformation = new javax.swing.JLabel();
         btnRedigera = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        pPublikation = new javax.swing.JPanel();
+        lblPublikation = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPp1 = new javax.swing.JTextPane();
+        pInlagg = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtPaneInlagg1 = new javax.swing.JScrollPane();
+        txtPnl1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(917, 572));
         setResizable(false);
 
         pBild.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,7 +100,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         pBildLayout.setHorizontalGroup(
             pBildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pBildLayout.createSequentialGroup()
-                .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblBild, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pBildLayout.setVerticalGroup(
@@ -112,7 +122,7 @@ public class ProfilGUI extends javax.swing.JFrame {
                 .addGroup(pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pBeskrivningLayout.createSequentialGroup()
                         .addComponent(lblBeskrivning)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 771, Short.MAX_VALUE))
                     .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -121,7 +131,7 @@ public class ProfilGUI extends javax.swing.JFrame {
             .addGroup(pBeskrivningLayout.createSequentialGroup()
                 .addComponent(lblBeskrivning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -151,7 +161,7 @@ public class ProfilGUI extends javax.swing.JFrame {
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblTitel)
                         .addGap(77, 77, 77)
-                        .addComponent(lblVisaTitel, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                        .addComponent(lblVisaTitel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pInformationLayout.createSequentialGroup()
                         .addComponent(lblRum)
                         .addGap(76, 76, 76)
@@ -212,6 +222,60 @@ public class ProfilGUI extends javax.swing.JFrame {
             }
         });
 
+        pPublikation.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblPublikation.setText("Senaste publikationer");
+
+        jScrollPane1.setViewportView(txtPp1);
+
+        javax.swing.GroupLayout pPublikationLayout = new javax.swing.GroupLayout(pPublikation);
+        pPublikation.setLayout(pPublikationLayout);
+        pPublikationLayout.setHorizontalGroup(
+            pPublikationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPublikationLayout.createSequentialGroup()
+                .addComponent(lblPublikation)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPublikationLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        pPublikationLayout.setVerticalGroup(
+            pPublikationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pPublikationLayout.createSequentialGroup()
+                .addComponent(lblPublikation)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pInlagg.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Senaste inlägg");
+
+        txtPaneInlagg1.setViewportView(txtPnl1);
+
+        javax.swing.GroupLayout pInlaggLayout = new javax.swing.GroupLayout(pInlagg);
+        pInlagg.setLayout(pInlaggLayout);
+        pInlaggLayout.setHorizontalGroup(
+            pInlaggLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInlaggLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pInlaggLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(txtPaneInlagg1)
+                .addContainerGap())
+        );
+        pInlaggLayout.setVerticalGroup(
+            pInlaggLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pInlaggLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPaneInlagg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,23 +283,25 @@ public class ProfilGUI extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnExit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRedigera))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pBild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pInlagg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pPublikation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pBeskrivning, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(pBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblInformation)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblNamn))
-                                    .addComponent(pInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnExit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRedigera)))
+                                    .addComponent(pInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -250,19 +316,40 @@ public class ProfilGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pBild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRedigera)
-                    .addComponent(btnExit))
-                .addGap(27, 27, 27))
+                .addComponent(pPublikation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pInlagg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExit)
+                    .addComponent(btnRedigera))
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setIngressText(int tick, JTextPane txtPanel) {
+        int i = 0;
+        try {
+            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG");
+            while (inlagg.next() && i < tick) {
+
+                String rubrik = inlagg.getString("RUBRIK");
+                String ingress = inlagg.getString("INGRESS");
+                String datum = inlagg.getString("DATUM");
+                txtPnl1.setText(rubrik + "\n" + ingress + "\n" + datum);
+                i++;
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
     private void btnRedigeraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRedigeraActionPerformed
         // Till RegideraProfilGUI
 
@@ -279,12 +366,15 @@ public class ProfilGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRedigera;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblBeskrivning;
     private javax.swing.JLabel lblBild;
     private javax.swing.JLabel lblEpost;
     private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOrganisation;
+    private javax.swing.JLabel lblPublikation;
     private javax.swing.JLabel lblRum;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JLabel lblTitel;
@@ -297,5 +387,10 @@ public class ProfilGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pBeskrivning;
     private javax.swing.JPanel pBild;
     private javax.swing.JPanel pInformation;
+    private javax.swing.JPanel pInlagg;
+    private javax.swing.JPanel pPublikation;
+    private javax.swing.JScrollPane txtPaneInlagg1;
+    private javax.swing.JTextPane txtPnl1;
+    private javax.swing.JTextPane txtPp1;
     // End of variables declaration//GEN-END:variables
 }
