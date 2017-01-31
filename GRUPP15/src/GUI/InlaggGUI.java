@@ -28,12 +28,6 @@ public class InlaggGUI extends javax.swing.JFrame {
         this.inloggadPerson = inloggadPerson;
         initComponents();
 
-        //Lägga in dessa + fler i databasen istället?
-        cbFont.addItem("Monospaced");
-        cbFont.addItem("Arial");
-        cbStorlek.addItem("11");
-        cbStorlek.addItem("16");
-
     }
 
     /**
@@ -46,8 +40,6 @@ public class InlaggGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMain = new javax.swing.JPanel();
-        scrPnltaInlagg = new javax.swing.JScrollPane();
-        taInlagg = new javax.swing.JTextArea();
         tfRubrik = new javax.swing.JTextField();
         btnPublicera = new javax.swing.JButton();
         cbKategori = new javax.swing.JComboBox<>();
@@ -55,16 +47,13 @@ public class InlaggGUI extends javax.swing.JFrame {
         cbStorlek = new javax.swing.JComboBox<>();
         btnBold = new javax.swing.JToggleButton();
         btnItalic = new javax.swing.JToggleButton();
-        btnAndra = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tpInlagg = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
-
-        taInlagg.setColumns(20);
-        taInlagg.setRows(5);
-        scrPnltaInlagg.setViewportView(taInlagg);
 
         tfRubrik.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tfRubrik.setText("Rubrik");
@@ -84,6 +73,20 @@ public class InlaggGUI extends javax.swing.JFrame {
 
         cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Utbildning", "Forskning" }));
 
+        cbFont.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Arial", "Book Antiqua", "Calibri", "Garamond", "Georgia", "Monospace", "Verdana", "Tahoma", "Times New Roman" }));
+        cbFont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbFontActionPerformed(evt);
+            }
+        });
+
+        cbStorlek.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "8", "10", "12", "14", "18", "24", "32", "36", "48" }));
+        cbStorlek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbStorlekActionPerformed(evt);
+            }
+        });
+
         btnBold.setBackground(new java.awt.Color(255, 255, 255));
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnBold.setText("B");
@@ -102,14 +105,6 @@ public class InlaggGUI extends javax.swing.JFrame {
             }
         });
 
-        btnAndra.setBackground(new java.awt.Color(255, 255, 255));
-        btnAndra.setText("Ändra");
-        btnAndra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAndraActionPerformed(evt);
-            }
-        });
-
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Huvudmeny");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -118,62 +113,58 @@ public class InlaggGUI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(tpInlagg);
+
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(scrPnltaInlagg, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlMainLayout.createSequentialGroup()
-                                .addComponent(btnExit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(btnPublicera, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnAndra)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnBold)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnItalic)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btnExit)
+                        .addGap(405, 405, 405)
+                        .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlMainLayout.createSequentialGroup()
+                            .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(51, 51, 51)
+                            .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnBold)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnItalic))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnPublicera, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMainLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
-                        .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlMainLayout.createSequentialGroup()
-                                .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))
-                            .addGroup(pnlMainLayout.createSequentialGroup()
-                                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnItalic)
-                                    .addComponent(btnBold)
-                                    .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnAndra))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addComponent(scrPnltaInlagg, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(tfRubrik, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
                         .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnExit)))
-                    .addComponent(btnPublicera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                            .addComponent(cbFont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbStorlek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBold)
+                            .addComponent(btnItalic))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnExit, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPublicera, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbKategori, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         getContentPane().add(pnlMain, "card2");
@@ -181,41 +172,32 @@ public class InlaggGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-//Måste ändra både font och storlek samtidigt just nu vilket innebär att det 
-//måste finnas en "ändra" knapp 
-//allting i textarean ändras, vill att bara selected text ska ändras
-    private void btnAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAndraActionPerformed
 
-        String font = (String) cbFont.getSelectedItem();
-        String fontStorlek = (String) cbStorlek.getSelectedItem();
-        int storlek2 = Integer.parseInt(fontStorlek);
-
-        Font myFont = new Font(font, Font.PLAIN, storlek2);
-
-        taInlagg.setFont(myFont);
-    }//GEN-LAST:event_btnAndraActionPerformed
-//Just nu kan texten inte vara bold och italic samtidigt 
+///Just nu kan texten inte vara bold och italic samtidigt 
 //och allting i textarean blir fetstil
 
     private void btnBoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoldActionPerformed
 
         if (btnBold.isSelected()) {
-            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.BOLD));
+            tpInlagg.setFont(tpInlagg.getFont().deriveFont(Font.BOLD));
+         
 
-        } else {
-            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.PLAIN)); //istället för plain, typ "not bold"? För om man valt kursivt ska det vara kvar
-        }                                                                //och vice versa
-
+            } else {
+                tpInlagg.setFont(tpInlagg.getFont().deriveFont(Font.PLAIN)); //istället för plain, typ "not bold"? För om man valt kursivt ska det vara kvar
+            }                                                                //och vice versa
+        
     }//GEN-LAST:event_btnBoldActionPerformed
     //Just nu kan texten inte vara bold och italic samtidigt 
     //och allting i textarean blir kursivt
     private void btnItalicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnItalicActionPerformed
 
         if (btnItalic.isSelected()) {
-            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.ITALIC));
+            tpInlagg.setFont(tpInlagg.getFont().deriveFont(Font.ITALIC));
+
+            
 
         } else {
-            taInlagg.setFont(taInlagg.getFont().deriveFont(Font.PLAIN));
+            tpInlagg.setFont(tpInlagg.getFont().deriveFont(Font.PLAIN));
         }
     }//GEN-LAST:event_btnItalicActionPerformed
 
@@ -225,7 +207,7 @@ public class InlaggGUI extends javax.swing.JFrame {
 
     private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
         String rubrik = tfRubrik.getText();
-        String inlaggText = taInlagg.getText();
+        String inlaggText = tpInlagg.getText();
         String kategori = cbKategori.getSelectedItem().toString();
         boolean utbildningVald = false;
         boolean forskningVald = false;
@@ -264,6 +246,7 @@ public class InlaggGUI extends javax.swing.JFrame {
                     Database.sqlInsert("insert into INLAGG (INLAGGID, RUBRIK, INGRESS, HELTEXT, FORFATTARE, FORSKNING, UTBILDNING, DATUM) values "
                             + " (" + inlaggId + ",'" + rubrik + "','" + ingress + "','" + inlaggText + "'," + forfattare + "," + forskningVald + "," + utbildningVald + ",'" + datum.toString() + "')");
                     JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+                    dispose();
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Någonting gick fel!" + ex);
@@ -278,12 +261,34 @@ public class InlaggGUI extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void cbStorlekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStorlekActionPerformed
+        String font = cbFont.getSelectedItem().toString();
+        String fontStorlek = cbStorlek.getSelectedItem().toString();
+
+        int storlek2 = Integer.parseInt(fontStorlek);
+
+        Font myFont = new Font(font, Font.PLAIN, storlek2);
+
+        tpInlagg.setFont(myFont);
+    }//GEN-LAST:event_cbStorlekActionPerformed
+
+    private void cbFontActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbFontActionPerformed
+        String font = cbFont.getSelectedItem().toString();
+        String fontStorlek = cbStorlek.getSelectedItem().toString();
+
+        int storlek2 = Integer.parseInt(fontStorlek);
+
+        Font myFont = new Font(font, Font.PLAIN, storlek2);
+
+        tpInlagg.setFont(myFont);
+    }//GEN-LAST:event_cbFontActionPerformed
+
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAndra;
     private javax.swing.JToggleButton btnBold;
     private javax.swing.JButton btnExit;
     private javax.swing.JToggleButton btnItalic;
@@ -291,9 +296,9 @@ public class InlaggGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbFont;
     private javax.swing.JComboBox<String> cbKategori;
     private javax.swing.JComboBox<String> cbStorlek;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlMain;
-    private javax.swing.JScrollPane scrPnltaInlagg;
-    private javax.swing.JTextArea taInlagg;
     private javax.swing.JTextField tfRubrik;
+    private javax.swing.JTextPane tpInlagg;
     // End of variables declaration//GEN-END:variables
 }
