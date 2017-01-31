@@ -21,20 +21,17 @@ import javax.swing.*;
  *
  * @author Nötfärs
  */
-public class HemGUI extends javax.swing.JFrame {
+public class KalenderGUI extends javax.swing.JFrame {
 
     private Person inloggadPerson;
 
-    public HemGUI(Person inloggadPerson) {
+    public KalenderGUI() {
         initComponents();
         this.inloggadPerson = inloggadPerson;
         Calendar cal = Calendar.getInstance();
         lblDatum.setText("Startsida - Dagens datum är: " + cal.getTime().toString());
         uppdateraDatum();
-        setIngressText(1, txtPnlInlagg1, 0);
-                setIngressText(2, txtPnlInlagg2, 1);
-                        setIngressText(3, txtPnlInlagg3, 2);
-                                                setIngressText(4, txtPnlInlagg4, 3);
+        
     }
 
     /**
@@ -58,16 +55,23 @@ public class HemGUI extends javax.swing.JFrame {
         btnSkapaInlagg = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         pnlTextArea = new javax.swing.JPanel();
-        pnlIngress = new javax.swing.JPanel();
-        scrPnlTextPane1 = new javax.swing.JScrollPane();
-        txtPnlInlagg1 = new javax.swing.JTextPane();
-        scrPnlTextPane2 = new javax.swing.JScrollPane();
-        txtPnlInlagg2 = new javax.swing.JTextPane();
-        scrPnlTextPane3 = new javax.swing.JScrollPane();
-        txtPnlInlagg3 = new javax.swing.JTextPane();
-        scrPnlTextPane4 = new javax.swing.JScrollPane();
-        txtPnlInlagg4 = new javax.swing.JTextPane();
         pnlHeltext = new javax.swing.JPanel();
+        jScrollPane_TidTill = new javax.swing.JScrollPane();
+        jList_TidTill = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane_TidFran = new javax.swing.JScrollPane();
+        jList_TidFran = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        pnlIngress = new javax.swing.JPanel();
+        dateChooserPanel1 = new datechooser.beans.DateChooserPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -79,11 +83,6 @@ public class HemGUI extends javax.swing.JFrame {
 
         btnUtbildning.setBackground(new java.awt.Color(255, 255, 255));
         btnUtbildning.setText("Utbildning");
-        btnUtbildning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUtbildningActionPerformed(evt);
-            }
-        });
 
         btnForskning.setBackground(new java.awt.Color(255, 255, 255));
         btnForskning.setText("Forskning");
@@ -181,65 +180,116 @@ public class HemGUI extends javax.swing.JFrame {
 
         pnlTextArea.setLayout(new java.awt.CardLayout());
 
-        txtPnlInlagg1.setEditable(false);
-        txtPnlInlagg1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane1.setViewportView(txtPnlInlagg1);
+        jList_TidTill.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "00.00", "00.30", "01.00", "01.30", "02.00", "02.30", "03.00", "03.30", "04.00", "04.30", "05.30", "06.00", "06.30", "07.00", "07.30", "08.30", "09.00", "09.30", "10.00", "10.30", "11.00", "11.30", "12.00", "12.30", "13.00", "13.30", "14.00", "14.30", "15.00", "15.30", "16.00", "16.30", "17.00", "17.30", "18.00", "18.30", "19.00", "19.30", "20.00", "20.30", "21.00", "21.30", "22.00", "22.30", "23.00", "23.30" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane_TidTill.setViewportView(jList_TidTill);
 
-        txtPnlInlagg2.setEditable(false);
-        txtPnlInlagg2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane2.setViewportView(txtPnlInlagg2);
+        jButton1.setText("Boka möte");
 
-        txtPnlInlagg3.setEditable(false);
-        txtPnlInlagg3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane3.setViewportView(txtPnlInlagg3);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
-        txtPnlInlagg4.setEditable(false);
-        txtPnlInlagg4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane4.setViewportView(txtPnlInlagg4);
+        jLabel1.setText("Välj tid för mötet");
 
-        javax.swing.GroupLayout pnlIngressLayout = new javax.swing.GroupLayout(pnlIngress);
-        pnlIngress.setLayout(pnlIngressLayout);
-        pnlIngressLayout.setHorizontalGroup(
-            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIngressLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        pnlIngressLayout.setVerticalGroup(
-            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIngressLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
-        );
+        jLabel2.setText("Syfte eller mötesplats");
 
-        pnlTextArea.add(pnlIngress, "card5");
+        jLabel4.setText("Bjud in deltagare");
+
+        jList_TidFran.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "00.00", "00.30", "01.00", "01.30", "02.00", "02.30", "03.00", "03.30", "04.00", "04.30", "05.30", "06.00", "06.30", "07.00", "07.30", "08.30", "09.00", "09.30", "10.00", "10.30", "11.00", "11.30", "12.00", "12.30", "13.00", "13.30", "14.00", "14.30", "15.00", "15.30", "16.00", "16.30", "17.00", "17.30", "18.00", "18.30", "19.00", "19.30", "20.00", "20.30", "21.00", "21.30", "22.00", "22.30", "23.00", "23.30" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane_TidFran.setViewportView(jList_TidFran);
+
+        jLabel5.setText("Från");
+
+        jLabel6.setText("Till");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList1);
 
         javax.swing.GroupLayout pnlHeltextLayout = new javax.swing.GroupLayout(pnlHeltext);
         pnlHeltext.setLayout(pnlHeltextLayout);
         pnlHeltextLayout.setHorizontalGroup(
             pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
+            .addGroup(pnlHeltextLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jButton1)
+                .addGap(54, 54, 54)
+                .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(pnlHeltextLayout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(82, 82, 82)
+                            .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel6))
+                                .addGroup(pnlHeltextLayout.createSequentialGroup()
+                                    .addGap(66, 66, 66)
+                                    .addComponent(jScrollPane_TidTill, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(42, 42, 42)
+                            .addComponent(jLabel2)
+                            .addGap(97, 97, 97))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeltextLayout.createSequentialGroup()
+                            .addComponent(jScrollPane_TidFran, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         pnlHeltextLayout.setVerticalGroup(
             pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(pnlHeltextLayout.createSequentialGroup()
+                .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(pnlHeltextLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane_TidTill, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                    .addComponent(jScrollPane_TidFran, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlHeltextLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(17, 17, 17))
+                    .addGroup(pnlHeltextLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))))
         );
 
         pnlTextArea.add(pnlHeltext, "card3");
+
+        javax.swing.GroupLayout pnlIngressLayout = new javax.swing.GroupLayout(pnlIngress);
+        pnlIngress.setLayout(pnlIngressLayout);
+        pnlIngressLayout.setHorizontalGroup(
+            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(dateChooserPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 939, Short.MAX_VALUE)
+        );
+        pnlIngressLayout.setVerticalGroup(
+            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(dateChooserPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+        );
+
+        pnlTextArea.add(pnlIngress, "card5");
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
@@ -281,36 +331,6 @@ public class HemGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
-
-        ProfilGUI pGUI = new ProfilGUI(inloggadPerson);
-        pGUI.setVisible(true);
-
-//        try {
-//            Connection con = Database.getDB();
-//            Statement stmt = con.createStatement();
-//            String sql = "SELECT * FROM namn";
-//            ResultSet rs = stmt.executeQuery(sql);
-//            String p = "";
-//            
-//            while (rs.next()) {
-//                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
-//                jTextArea1.setText(p);
-//            }
-//        } catch (SQLException error) {
-//            System.out.println(error.getMessage());
-//        }
-    }//GEN-LAST:event_btnProfilActionPerformed
-
-    private void btnStartsidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartsidaActionPerformed
-
-    }//GEN-LAST:event_btnStartsidaActionPerformed
-
-    private void btnSkapaInlaggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaInlaggActionPerformed
-        InlaggGUI inlagg = new InlaggGUI(inloggadPerson);
-        inlagg.setVisible(true);
-    }//GEN-LAST:event_btnSkapaInlaggActionPerformed
-
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         LoginGUI login1 = new LoginGUI();
         login1.setVisible(true);
@@ -327,14 +347,39 @@ public class HemGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void btnSkapaInlaggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaInlaggActionPerformed
+        InlaggGUI inlagg = new InlaggGUI(inloggadPerson);
+        inlagg.setVisible(true);
+    }//GEN-LAST:event_btnSkapaInlaggActionPerformed
+
+    private void btnStartsidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartsidaActionPerformed
+
+    }//GEN-LAST:event_btnStartsidaActionPerformed
+
+    private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
+
+        ProfilGUI pGUI = new ProfilGUI(inloggadPerson);
+        pGUI.setVisible(true);
+
+        //        try {
+            //            Connection con = Database.getDB();
+            //            Statement stmt = con.createStatement();
+            //            String sql = "SELECT * FROM namn";
+            //            ResultSet rs = stmt.executeQuery(sql);
+            //            String p = "";
+            //
+            //            while (rs.next()) {
+                //                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
+                //                jTextArea1.setText(p);
+                //            }
+            //        } catch (SQLException error) {
+            //            System.out.println(error.getMessage());
+            //        }
+    }//GEN-LAST:event_btnProfilActionPerformed
+
     private void btnForskningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForskningActionPerformed
 
     }//GEN-LAST:event_btnForskningActionPerformed
-
-    private void btnUtbildningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtbildningActionPerformed
-        
-        
-    }//GEN-LAST:event_btnUtbildningActionPerformed
     public void uppdateraDatum() {
         ActionListener uppgift = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -346,15 +391,10 @@ public class HemGUI extends javax.swing.JFrame {
         new Timer(1000, uppgift).start();
     }
 
-    public void setIngressText(int tick, JTextPane txtPanel, int tickDown) {
+    public void setIngressText(int tick, JTextPane txtPanel) {
         int i = 0;
-        int idKoll = 0;
         try {
-            ResultSet id = Database.sqlSelect("SELECT MAX(INLAGGID) FROM INLAGG");
-            if (id.next()) {
-            idKoll = id.getInt(1) - tickDown;
-            }
-            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG WHERE INLAGGID = " + idKoll);
+            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG");
             while (inlagg.next() && i < tick) {
 
                 String rubrik = inlagg.getString("RUBRIK");
@@ -379,6 +419,21 @@ public class HemGUI extends javax.swing.JFrame {
     private javax.swing.JButton btnSkapaInlagg;
     private javax.swing.JButton btnStartsida;
     private javax.swing.JButton btnUtbildning;
+    private datechooser.beans.DateChooserPanel dateChooserPanel1;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<String> jList_TidFran;
+    private javax.swing.JList<String> jList_TidTill;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane_TidFran;
+    private javax.swing.JScrollPane jScrollPane_TidTill;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JPanel pnlHeltext;
     private javax.swing.JPanel pnlIngress;
@@ -386,13 +441,5 @@ public class HemGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMeny;
     private javax.swing.JPanel pnlMeny2;
     private javax.swing.JPanel pnlTextArea;
-    private javax.swing.JScrollPane scrPnlTextPane1;
-    private javax.swing.JScrollPane scrPnlTextPane2;
-    private javax.swing.JScrollPane scrPnlTextPane3;
-    private javax.swing.JScrollPane scrPnlTextPane4;
-    private javax.swing.JTextPane txtPnlInlagg1;
-    private javax.swing.JTextPane txtPnlInlagg2;
-    private javax.swing.JTextPane txtPnlInlagg3;
-    private javax.swing.JTextPane txtPnlInlagg4;
     // End of variables declaration//GEN-END:variables
 }
