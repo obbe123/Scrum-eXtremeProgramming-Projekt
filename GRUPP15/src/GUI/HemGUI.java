@@ -7,11 +7,17 @@ package GUI;
 
 import grupp1.Database;
 import grupp1.Person;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.*;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -31,10 +37,6 @@ public class HemGUI extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         lblDatum.setText("Startsida - Dagens datum är: " + cal.getTime().toString());
         uppdateraDatum();
-        setIngressText(1, txtPnlInlagg1, 0);
-                setIngressText(2, txtPnlInlagg2, 1);
-                        setIngressText(3, txtPnlInlagg3, 2);
-                                                setIngressText(4, txtPnlInlagg4, 3);
     }
 
     /**
@@ -49,25 +51,25 @@ public class HemGUI extends javax.swing.JFrame {
         pnlMain = new javax.swing.JPanel();
         pnlMeny = new javax.swing.JPanel();
         btnHem = new javax.swing.JButton();
-        btnUtbildning = new javax.swing.JButton();
-        btnForskning = new javax.swing.JButton();
         btnProfil = new javax.swing.JButton();
-        lblDatum = new javax.swing.JLabel();
-        pnlMeny2 = new javax.swing.JPanel();
-        btnStartsida = new javax.swing.JButton();
         btnSkapaInlagg = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        pnlTextArea = new javax.swing.JPanel();
-        pnlIngress = new javax.swing.JPanel();
-        scrPnlTextPane1 = new javax.swing.JScrollPane();
-        txtPnlInlagg1 = new javax.swing.JTextPane();
-        scrPnlTextPane2 = new javax.swing.JScrollPane();
-        txtPnlInlagg2 = new javax.swing.JTextPane();
-        scrPnlTextPane3 = new javax.swing.JScrollPane();
-        txtPnlInlagg3 = new javax.swing.JTextPane();
-        scrPnlTextPane4 = new javax.swing.JScrollPane();
-        txtPnlInlagg4 = new javax.swing.JTextPane();
-        pnlHeltext = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        mainInfoPnl = new javax.swing.JPanel();
+        hemInfoPnl = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        utbStartPnl = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        utbDiskuPnl = new javax.swing.JPanel();
+        jTextField2 = new javax.swing.JTextField();
+        lblDatum = new javax.swing.JLabel();
+        mainDirPnl = new javax.swing.JPanel();
+        hemDirPnl = new javax.swing.JPanel();
+        utbDirPnl = new javax.swing.JPanel();
+        utbStartBtn = new javax.swing.JButton();
+        utbDiskuBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -77,65 +79,11 @@ public class HemGUI extends javax.swing.JFrame {
         btnHem.setBackground(new java.awt.Color(255, 255, 255));
         btnHem.setText("Hem");
 
-        btnUtbildning.setBackground(new java.awt.Color(255, 255, 255));
-        btnUtbildning.setText("Utbildning");
-        btnUtbildning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUtbildningActionPerformed(evt);
-            }
-        });
-
-        btnForskning.setBackground(new java.awt.Color(255, 255, 255));
-        btnForskning.setText("Forskning");
-        btnForskning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnForskningActionPerformed(evt);
-            }
-        });
-
         btnProfil.setBackground(new java.awt.Color(255, 255, 255));
         btnProfil.setText("Profil");
         btnProfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfilActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlMenyLayout = new javax.swing.GroupLayout(pnlMeny);
-        pnlMeny.setLayout(pnlMenyLayout);
-        pnlMenyLayout.setHorizontalGroup(
-            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnHem, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUtbildning, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnForskning, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlMenyLayout.setVerticalGroup(
-            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProfil)
-                    .addComponent(btnForskning)
-                    .addComponent(btnUtbildning)
-                    .addComponent(btnHem)
-                    .addComponent(lblDatum))
-                .addContainerGap())
-        );
-
-        btnStartsida.setBackground(new java.awt.Color(255, 255, 255));
-        btnStartsida.setText("Startsida");
-        btnStartsida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartsidaActionPerformed(evt);
             }
         });
 
@@ -155,105 +103,195 @@ public class HemGUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnlMeny2Layout = new javax.swing.GroupLayout(pnlMeny2);
-        pnlMeny2.setLayout(pnlMeny2Layout);
-        pnlMeny2Layout.setHorizontalGroup(
-            pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeny2Layout.createSequentialGroup()
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Utbildning");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Forskning");
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setText("Kalender");
+
+        javax.swing.GroupLayout pnlMenyLayout = new javax.swing.GroupLayout(pnlMeny);
+        pnlMeny.setLayout(pnlMenyLayout);
+        pnlMenyLayout.setHorizontalGroup(
+            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenyLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSkapaInlagg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStartsida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        pnlMeny2Layout.setVerticalGroup(
-            pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeny2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnStartsida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSkapaInlagg)
+                .addComponent(btnHem, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExit)
+                .addComponent(btnSkapaInlagg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        pnlMenyLayout.setVerticalGroup(
+            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProfil)
+                    .addComponent(btnHem)
+                    .addComponent(btnSkapaInlagg)
+                    .addComponent(btnExit)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addContainerGap())
         );
 
-        pnlTextArea.setLayout(new java.awt.CardLayout());
+        mainInfoPnl.setLayout(new java.awt.CardLayout());
 
-        txtPnlInlagg1.setEditable(false);
-        txtPnlInlagg1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane1.setViewportView(txtPnlInlagg1);
+        hemInfoPnl.setBackground(new java.awt.Color(255, 255, 255));
 
-        txtPnlInlagg2.setEditable(false);
-        txtPnlInlagg2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane2.setViewportView(txtPnlInlagg2);
+        jTextField3.setText("Hemsidan");
 
-        txtPnlInlagg3.setEditable(false);
-        txtPnlInlagg3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane3.setViewportView(txtPnlInlagg3);
+        javax.swing.GroupLayout hemInfoPnlLayout = new javax.swing.GroupLayout(hemInfoPnl);
+        hemInfoPnl.setLayout(hemInfoPnlLayout);
+        hemInfoPnlLayout.setHorizontalGroup(
+            hemInfoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(hemInfoPnlLayout.createSequentialGroup()
+                .addGap(283, 283, 283)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(349, Short.MAX_VALUE))
+        );
+        hemInfoPnlLayout.setVerticalGroup(
+            hemInfoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hemInfoPnlLayout.createSequentialGroup()
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(173, 173, 173))
+        );
 
-        txtPnlInlagg4.setEditable(false);
-        txtPnlInlagg4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        scrPnlTextPane4.setViewportView(txtPnlInlagg4);
+        mainInfoPnl.add(hemInfoPnl, "mainHemCard");
 
-        javax.swing.GroupLayout pnlIngressLayout = new javax.swing.GroupLayout(pnlIngress);
-        pnlIngress.setLayout(pnlIngressLayout);
-        pnlIngressLayout.setHorizontalGroup(
-            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIngressLayout.createSequentialGroup()
+        utbStartPnl.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextField1.setText("Utbildning startsida");
+
+        javax.swing.GroupLayout utbStartPnlLayout = new javax.swing.GroupLayout(utbStartPnl);
+        utbStartPnl.setLayout(utbStartPnlLayout);
+        utbStartPnlLayout.setHorizontalGroup(
+            utbStartPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbStartPnlLayout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(306, Short.MAX_VALUE))
+        );
+        utbStartPnlLayout.setVerticalGroup(
+            utbStartPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbStartPnlLayout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
+        );
+
+        mainInfoPnl.add(utbStartPnl, "mainUtbCard");
+
+        utbDiskuPnl.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextField2.setText("Diskussion sida");
+
+        javax.swing.GroupLayout utbDiskuPnlLayout = new javax.swing.GroupLayout(utbDiskuPnl);
+        utbDiskuPnl.setLayout(utbDiskuPnlLayout);
+        utbDiskuPnlLayout.setHorizontalGroup(
+            utbDiskuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbDiskuPnlLayout.createSequentialGroup()
+                .addGap(258, 258, 258)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        utbDiskuPnlLayout.setVerticalGroup(
+            utbDiskuPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbDiskuPnlLayout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(188, Short.MAX_VALUE))
+        );
+
+        mainInfoPnl.add(utbDiskuPnl, "diskUtbCard");
+        mainInfoPnl.add(lblDatum, "card4");
+
+        mainDirPnl.setBackground(new java.awt.Color(255, 255, 255));
+        mainDirPnl.setLayout(new java.awt.CardLayout());
+
+        hemDirPnl.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout hemDirPnlLayout = new javax.swing.GroupLayout(hemDirPnl);
+        hemDirPnl.setLayout(hemDirPnlLayout);
+        hemDirPnlLayout.setHorizontalGroup(
+            hemDirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 114, Short.MAX_VALUE)
+        );
+        hemDirPnlLayout.setVerticalGroup(
+            hemDirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 372, Short.MAX_VALUE)
+        );
+
+        mainDirPnl.add(hemDirPnl, "dirHemCard");
+
+        utbStartBtn.setBackground(new java.awt.Color(255, 255, 255));
+        utbStartBtn.setText("Start");
+        utbStartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utbStartBtnActionPerformed(evt);
+            }
+        });
+
+        utbDiskuBtn.setBackground(new java.awt.Color(255, 255, 255));
+        utbDiskuBtn.setText("Diskussion");
+        utbDiskuBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utbDiskuBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout utbDirPnlLayout = new javax.swing.GroupLayout(utbDirPnl);
+        utbDirPnl.setLayout(utbDirPnlLayout);
+        utbDirPnlLayout.setHorizontalGroup(
+            utbDirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbDirPnlLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(utbDirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(utbDiskuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(utbStartBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
-        pnlIngressLayout.setVerticalGroup(
-            pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIngressLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addGroup(pnlIngressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrPnlTextPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrPnlTextPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26))
+        utbDirPnlLayout.setVerticalGroup(
+            utbDirPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(utbDirPnlLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(utbStartBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(utbDiskuBtn)
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
-        pnlTextArea.add(pnlIngress, "card5");
-
-        javax.swing.GroupLayout pnlHeltextLayout = new javax.swing.GroupLayout(pnlHeltext);
-        pnlHeltext.setLayout(pnlHeltextLayout);
-        pnlHeltextLayout.setHorizontalGroup(
-            pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
-        pnlHeltextLayout.setVerticalGroup(
-            pnlHeltextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
-        );
-
-        pnlTextArea.add(pnlHeltext, "card3");
+        mainDirPnl.add(utbDirPnl, "dirUtbCard");
 
         javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
         pnlMain.setLayout(pnlMainLayout);
         pnlMainLayout.setHorizontalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlMeny, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlMainLayout.createSequentialGroup()
-                        .addComponent(pnlMeny2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addGroup(pnlMainLayout.createSequentialGroup()
+                .addComponent(mainDirPnl, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mainInfoPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+            .addComponent(pnlMeny, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlMainLayout.setVerticalGroup(
             pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,8 +300,8 @@ public class HemGUI extends javax.swing.JFrame {
                 .addComponent(pnlMeny, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlMeny2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mainInfoPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mainDirPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -271,11 +309,13 @@ public class HemGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,10 +342,6 @@ public class HemGUI extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_btnProfilActionPerformed
 
-    private void btnStartsidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartsidaActionPerformed
-
-    }//GEN-LAST:event_btnStartsidaActionPerformed
-
     private void btnSkapaInlaggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaInlaggActionPerformed
         InlaggGUI inlagg = new InlaggGUI(inloggadPerson);
         inlagg.setVisible(true);
@@ -327,14 +363,23 @@ public class HemGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnForskningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForskningActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    changeCard(mainInfoPnl, "mainUtbCard");
+    changeCard(mainDirPnl, "dirUtbCard");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    }//GEN-LAST:event_btnForskningActionPerformed
+    private void utbStartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utbStartBtnActionPerformed
+        changeCard(mainInfoPnl, "mainUtbCard");
+    }//GEN-LAST:event_utbStartBtnActionPerformed
 
-    private void btnUtbildningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtbildningActionPerformed
-        
-        
-    }//GEN-LAST:event_btnUtbildningActionPerformed
+    private void utbDiskuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utbDiskuBtnActionPerformed
+        changeCard(mainInfoPnl, "diskUtbCard");
+    }//GEN-LAST:event_utbDiskuBtnActionPerformed
+    private void changeCard(JPanel rootpanel, String kort) {
+        CardLayout card = (CardLayout) rootpanel.getLayout();
+        card.show(rootpanel, kort);
+    }
+    
     public void uppdateraDatum() {
         ActionListener uppgift = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -373,26 +418,26 @@ public class HemGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnForskning;
     private javax.swing.JButton btnHem;
     private javax.swing.JButton btnProfil;
     private javax.swing.JButton btnSkapaInlagg;
-    private javax.swing.JButton btnStartsida;
-    private javax.swing.JButton btnUtbildning;
+    private javax.swing.JPanel hemDirPnl;
+    private javax.swing.JPanel hemInfoPnl;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblDatum;
-    private javax.swing.JPanel pnlHeltext;
-    private javax.swing.JPanel pnlIngress;
+    private javax.swing.JPanel mainDirPnl;
+    private javax.swing.JPanel mainInfoPnl;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlMeny;
-    private javax.swing.JPanel pnlMeny2;
-    private javax.swing.JPanel pnlTextArea;
-    private javax.swing.JScrollPane scrPnlTextPane1;
-    private javax.swing.JScrollPane scrPnlTextPane2;
-    private javax.swing.JScrollPane scrPnlTextPane3;
-    private javax.swing.JScrollPane scrPnlTextPane4;
-    private javax.swing.JTextPane txtPnlInlagg1;
-    private javax.swing.JTextPane txtPnlInlagg2;
-    private javax.swing.JTextPane txtPnlInlagg3;
-    private javax.swing.JTextPane txtPnlInlagg4;
+    private javax.swing.JPanel utbDirPnl;
+    private javax.swing.JButton utbDiskuBtn;
+    private javax.swing.JPanel utbDiskuPnl;
+    private javax.swing.JButton utbStartBtn;
+    private javax.swing.JPanel utbStartPnl;
     // End of variables declaration//GEN-END:variables
 }
