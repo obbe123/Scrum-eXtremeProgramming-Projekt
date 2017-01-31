@@ -79,6 +79,11 @@ public class HemGUI extends javax.swing.JFrame {
 
         btnUtbildning.setBackground(new java.awt.Color(255, 255, 255));
         btnUtbildning.setText("Utbildning");
+        btnUtbildning.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUtbildningActionPerformed(evt);
+            }
+        });
 
         btnForskning.setBackground(new java.awt.Color(255, 255, 255));
         btnForskning.setText("Forskning");
@@ -177,19 +182,19 @@ public class HemGUI extends javax.swing.JFrame {
         pnlTextArea.setLayout(new java.awt.CardLayout());
 
         txtPnlInlagg1.setEditable(false);
-        txtPnlInlagg1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPnlInlagg1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrPnlTextPane1.setViewportView(txtPnlInlagg1);
 
         txtPnlInlagg2.setEditable(false);
-        txtPnlInlagg2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPnlInlagg2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrPnlTextPane2.setViewportView(txtPnlInlagg2);
 
         txtPnlInlagg3.setEditable(false);
-        txtPnlInlagg3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPnlInlagg3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrPnlTextPane3.setViewportView(txtPnlInlagg3);
 
         txtPnlInlagg4.setEditable(false);
-        txtPnlInlagg4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPnlInlagg4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         scrPnlTextPane4.setViewportView(txtPnlInlagg4);
 
         javax.swing.GroupLayout pnlIngressLayout = new javax.swing.GroupLayout(pnlIngress);
@@ -325,6 +330,11 @@ public class HemGUI extends javax.swing.JFrame {
     private void btnForskningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForskningActionPerformed
 
     }//GEN-LAST:event_btnForskningActionPerformed
+
+    private void btnUtbildningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUtbildningActionPerformed
+        
+        
+    }//GEN-LAST:event_btnUtbildningActionPerformed
     public void uppdateraDatum() {
         ActionListener uppgift = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
