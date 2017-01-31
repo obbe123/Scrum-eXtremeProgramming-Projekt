@@ -38,18 +38,14 @@ public class ProfilGUI extends javax.swing.JFrame {
         String epost = inloggadPerson.getEmail();
         lblVisaEpost.setText(epost);
 
-        int telenr = inloggadPerson.getTelefon();
-        String tele = Integer.toString(telenr);
-        lblVisaTel.setText("0" + tele);
+        String telenr = inloggadPerson.getTelefon();
+        lblVisaTel.setText(telenr);
 
         String rum = "1337";
         lblVisaRum.setText(rum);
 
         String beskrivning = inloggadPerson.getBeskrivning();
         lblVisaBeskrivning.setText(beskrivning);
-
-        String ovrigInfo = inloggadPerson.getOvrigInfo();
-        lblVisaOvrigInfo.setText(ovrigInfo);
 
         Database.uppdateraBild(lblBild, inloggadPerson);
     }
@@ -67,9 +63,7 @@ public class ProfilGUI extends javax.swing.JFrame {
         lblBild = new javax.swing.JLabel();
         pBeskrivning = new javax.swing.JPanel();
         lblVisaBeskrivning = new javax.swing.JLabel();
-        lblVisaOvrigInfo = new javax.swing.JLabel();
         lblBeskrivning = new javax.swing.JLabel();
-        lblOvrigInfo = new javax.swing.JLabel();
         pInformation = new javax.swing.JPanel();
         lblOrganisation = new javax.swing.JLabel();
         lblTitel = new javax.swing.JLabel();
@@ -87,7 +81,6 @@ public class ProfilGUI extends javax.swing.JFrame {
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(525, 430));
         setResizable(false);
 
         pBild.setBackground(new java.awt.Color(255, 255, 255));
@@ -109,11 +102,7 @@ public class ProfilGUI extends javax.swing.JFrame {
 
         lblVisaBeskrivning.setText("random text");
 
-        lblVisaOvrigInfo.setText("random text");
-
         lblBeskrivning.setText("Beskrivning:");
-
-        lblOvrigInfo.setText("Övrig info:");
 
         javax.swing.GroupLayout pBeskrivningLayout = new javax.swing.GroupLayout(pBeskrivning);
         pBeskrivning.setLayout(pBeskrivningLayout);
@@ -121,11 +110,8 @@ public class ProfilGUI extends javax.swing.JFrame {
             pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pBeskrivningLayout.createSequentialGroup()
                 .addGroup(pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblVisaOvrigInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pBeskrivningLayout.createSequentialGroup()
-                        .addGroup(pBeskrivningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBeskrivning)
-                            .addComponent(lblOvrigInfo))
+                        .addComponent(lblBeskrivning)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -135,11 +121,7 @@ public class ProfilGUI extends javax.swing.JFrame {
             .addGroup(pBeskrivningLayout.createSequentialGroup()
                 .addComponent(lblBeskrivning)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblOvrigInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblVisaOvrigInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblVisaBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -303,14 +285,12 @@ public class ProfilGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblInformation;
     private javax.swing.JLabel lblNamn;
     private javax.swing.JLabel lblOrganisation;
-    private javax.swing.JLabel lblOvrigInfo;
     private javax.swing.JLabel lblRum;
     private javax.swing.JLabel lblTelefon;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JLabel lblVisaBeskrivning;
     private javax.swing.JLabel lblVisaEpost;
     private javax.swing.JLabel lblVisaOrg;
-    private javax.swing.JLabel lblVisaOvrigInfo;
     private javax.swing.JLabel lblVisaRum;
     private javax.swing.JLabel lblVisaTel;
     private javax.swing.JLabel lblVisaTitel;

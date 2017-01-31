@@ -8,13 +8,19 @@ package GUI;
 import java.awt.Font;
 import grupp1.Database;
 import grupp1.Person;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author malin
  */
 public class InlaggGUI extends javax.swing.JFrame {
-private Person inloggadPerson;
+
+    private Person inloggadPerson;
+
     /**
      * Creates new form Inlagg
      */
@@ -27,8 +33,7 @@ private Person inloggadPerson;
         cbFont.addItem("Arial");
         cbStorlek.addItem("11");
         cbStorlek.addItem("16");
-        cbKategori.addItem("Utbildning");
-        cbKategori.addItem("Forskning");
+
     }
 
     /**
@@ -76,6 +81,8 @@ private Person inloggadPerson;
                 btnPubliceraActionPerformed(evt);
             }
         });
+
+        cbKategori.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Utbildning", "Forskning" }));
 
         btnBold.setBackground(new java.awt.Color(255, 255, 255));
         btnBold.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -213,31 +220,60 @@ private Person inloggadPerson;
     }//GEN-LAST:event_btnItalicActionPerformed
 
     private void tfRubrikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tfRubrikMouseClicked
-    tfRubrik.setText(null);
+        tfRubrik.setText(null);
     }//GEN-LAST:event_tfRubrikMouseClicked
 
     private void btnPubliceraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubliceraActionPerformed
-    //        String rubrik = tfRubrik.getText();
-//        String inlaggText = taInlagg.getText();
-//        String kategori = (String) cbKategori.getSelectedItem();
-//        String ingress = inlaggText.substring(0, 100) + "...";
-//        String datum = "2017-01-27"; //dagens datum
-//        String inlaggId = "1"; //ska ske med autoIncrement
-//        String forfattare = "30"; //ska ju vara id för inloggad användare
+        String rubrik = tfRubrik.getText();
+        String inlaggText = taInlagg.getText();
+        String kategori = cbKategori.getSelectedItem().toString();
+        boolean utbildningVald = false;
+        boolean forskningVald = false;
+        int inlaggId = 0;
+        String ingress = "";
+        String[] textDelning = inlaggText.split(" ");
+        Calendar dagensDatum = Calendar.getInstance();
+        Date datum = dagensDatum.getTime();
+        int forfattare = inloggadPerson.getId();
 
-//        try {
+        if (textDelning.length > 14) {
+            for (int i = 0; i < textDelning.length / 2 && i < 30; i++) {
+                ingress = ingress + textDelning[i] + " ";
+            }
+            ingress = ingress + "...";
+        } else {
+            for (int i = 0; i < textDelning.length; i++) {
+                ingress = ingress + textDelning[i] + " ";
+            }
+        }
 
-////          String id = Database.getAutoIncrement("inlagg", "inlaggid"); //Ger inlägget nästa lediga id för inlägg
-//            Database.insert("insert into inlagg (inlaggid, rubrik, ingress, heltext, datum, forfattare) values "
-//                    + "('" + inlaggId + "'," + "'" + rubrik + "'," + "'" + ingress + "'," + "'" + inlaggText + "'" + "," + " '" + datum + "'" + "," + "'" + forfattare + ")");
-//            JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
-//
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, "Någonting gick fel!");
-//
-//        }
+        if (inlaggText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Du måste Skriva något!");
+        } else {
+            if (kategori == "Utbildning") {
+                utbildningVald = true;
+            } else if (kategori == "Forskning") {
+                forskningVald = true;
+            }
+            if (utbildningVald || forskningVald) {
+                try {
+                    ResultSet idKoll = Database.sqlSelect("SELECT MAX(INLAGGID) FROM INLAGG"); //våran AutoIncrement ;D
+                    if (idKoll.next()) {
+                        inlaggId = idKoll.getInt(1) + 1;
+                    }
+                    Database.sqlInsert("insert into INLAGG (INLAGGID, RUBRIK, INGRESS, HELTEXT, FORFATTARE, FORSKNING, UTBILDNING, DATUM) values "
+                            + " (" + inlaggId + ",'" + rubrik + "','" + ingress + "','" + inlaggText + "'," + forfattare + "," + forskningVald + "," + utbildningVald + ",'" + datum.toString() + "')");
+                    JOptionPane.showMessageDialog(null, "Inlägget har publicerats");
+
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Någonting gick fel!" + ex);
+                }
     }//GEN-LAST:event_btnPubliceraActionPerformed
-
+    else {
+                JOptionPane.showMessageDialog(null, "Du måste välja en kategori!");
+            }
+        }
+    }
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed

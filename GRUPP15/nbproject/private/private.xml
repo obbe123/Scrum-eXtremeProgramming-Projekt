@@ -4,8 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/GUI/HemGUI.java</file>
-            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/grupp1/Database.java</file>
             <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/GUI/ProfilGUI.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/grupp1/Database.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/GUI/LoginGUI.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/grupp1/Person.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/grupp1/Main.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/GUI/InlaggGUI.java</file>
+            <file>file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/src/GUI/RedigeraProfilGUI.java</file>
         </group>
     </open-files>
 </project-private>

@@ -71,7 +71,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/ologo.png"))); // NOI18N
+        lblBild.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/logo.jpg"))); // NOI18N
 
         txtFieldAnvNamn.setText("Användarnamn");
         txtFieldAnvNamn.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -209,7 +209,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
         lblEpostNotis.setText("(Epost blir ditt användarnamn)");
 
-        lblBild1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/ologo.png"))); // NOI18N
+        lblBild1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/logo.jpg"))); // NOI18N
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Tillbaka");
@@ -227,46 +227,44 @@ public class LoginGUI extends javax.swing.JFrame {
         pnlNyAnvLayout.setHorizontalGroup(
             pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlNyAnvLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
-                                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEpost)
-                                    .addComponent(lblTelefon)
-                                    .addComponent(lblPw))
-                                .addGap(11, 11, 11))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
-                                .addComponent(lblPnummer)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(pnlNyAnvLayout.createSequentialGroup()
                                 .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblEfternamn)
-                                    .addComponent(lblFornamn))
-                                .addGap(33, 33, 33)))
-                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtFieldEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldPnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFieldEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPwField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblEpost)
+                                            .addComponent(lblTelefon)
+                                            .addComponent(lblPw))
+                                        .addGap(11, 11, 11))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
+                                        .addComponent(lblPnummer)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                    .addGroup(pnlNyAnvLayout.createSequentialGroup()
+                                        .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblEfternamn)
+                                            .addComponent(lblFornamn))
+                                        .addGap(33, 33, 33)))
+                                .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtFieldEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFieldFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFieldPnummer, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFieldEpost, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPwField1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblPnummerExempel)
-                            .addComponent(lblEpostNotis))
-                        .addContainerGap(63, Short.MAX_VALUE))
+                            .addComponent(lblEpostNotis)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNyAnvLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblBild1)
-                .addGap(63, 63, 63))
+                        .addComponent(lblBild1)
+                        .addGap(63, 63, 63))))
         );
         pnlNyAnvLayout.setVerticalGroup(
             pnlNyAnvLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,41 +360,42 @@ public class LoginGUI extends javax.swing.JFrame {
             String eNamn = "";
             Boolean admin = null;
             String beskrivning = "";
-            String ovrigt = "";
             String email = "";
             String losenord = "";
             String titel = "";
             String org = "";
             int pNummer = 0;
-            int tele = 0;
+            String tele = "";
             int id = 0;
+            String rum = "";
 
             while (rs.next()) {
                 id = rs.getInt("ANVANDARID");
                 fNamn = rs.getString("F_NAMN");
                 eNamn = rs.getString("E_NAMN");
                 pNummer = rs.getInt("PNUMMER");
-                tele = 0 + rs.getInt("TELEFON");
+                tele = rs.getString("TELEFON");
                 email = rs.getString("ANVANDAR_EPOST");
                 admin = rs.getBoolean("admin");
                 beskrivning = rs.getString("BESKRIVNING");
-                ovrigt = rs.getString("OVRIG_INFO");
+                rum = rs.getString("kontors_rum");
                 losenord = rs.getString("LOSENORD");
                 titel = rs.getString("TITEL");
                 org = rs.getString("ORGANISATION");
+                rum = rs.getString("kontors_rum");
 
             }
             if(angEpost.equals(email) && realPassword.equals(losenord)){
-                Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, tele, email, admin, beskrivning, ovrigt, losenord, titel, org);
+                Person inloggadPerson = new Person(id, fNamn, eNamn, pNummer, email, admin, beskrivning, losenord, titel, org, tele, rum);
                 HemGUI hem = new HemGUI(inloggadPerson);
                 hem.setVisible(true);
                 hem.setLocationRelativeTo(null);
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
+                JOptionPane.showMessageDialog(null, "Fel1 Användare/lösenord");
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Fel Användare/lösenord");
+            JOptionPane.showMessageDialog(null, "Fel2 Användare/lösenord");
         }
     }//GEN-LAST:event_btnLogInActionPerformed
 

@@ -101,7 +101,7 @@
             <Component class="javax.swing.JLabel" name="lblBild">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Resurs/ologo.png"/>
+                  <Image iconType="3" name="/Resurs/logo.jpg"/>
                 </Property>
               </Properties>
             </Component>
@@ -168,60 +168,57 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblEpost" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTelefon" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPw" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lblPnummer" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblEfternamn" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFornamn" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtFieldEfternamn" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <Component id="txtFieldFornamn" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <Component id="txtFieldPnummer" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <Component id="txtFieldTelefon" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <Component id="txtFieldEpost" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
-                                  <Component id="jPwField1" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btnExit" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEpost" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblTelefon" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblPw" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="lblPnummer" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="lblEfternamn" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblFornamn" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="txtFieldEfternamn" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="txtFieldFornamn" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="txtFieldPnummer" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="txtFieldTelefon" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="txtFieldEpost" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                          <Component id="jPwField1" alignment="1" min="-2" pref="185" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="btnExit" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblPnummerExempel" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblEpostNotis" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton1" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="63" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton1" min="-2" pref="161" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblBild1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblBild1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -352,7 +349,7 @@
             <Component class="javax.swing.JLabel" name="lblBild1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Resurs/ologo.png"/>
+                  <Image iconType="3" name="/Resurs/logo.jpg"/>
                 </Property>
               </Properties>
             </Component>
