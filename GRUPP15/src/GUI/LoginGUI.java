@@ -209,7 +209,7 @@ public class LoginGUI extends javax.swing.JFrame {
 
         lblEpostNotis.setText("(Epost blir ditt användarnamn)");
 
-        lblBild1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/ologo.png"))); // NOI18N
+        lblBild1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resurs/logo.jpg"))); // NOI18N
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
         btnExit.setText("Tillbaka");
