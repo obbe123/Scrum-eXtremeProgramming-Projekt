@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Tue Jan 31 15:09:33 CET 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0159-f4db-f75d-000006b7d248 
-on database directory C:\Users\AdaM\Desktop\projekt\Scrum-eXtremeProgramming-Projekt\GRUPP15\gruppDB2 with class loader sun.misc.Launcher$AppClassLoader@42a57993 
-Loaded from file:/C:/Users/AdaM/Desktop/projekt/Scrum-eXtremeProgramming-Projekt/GRUPP15/lib/derby.jar
+Tue Jan 31 22:36:08 CET 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0159-f674-d29e-00000e390348 
+on database directory C:\GithubClone\Scrum-eXtremeProgramming-Projekt\GRUPP15\gruppDB2 with class loader sun.misc.Launcher$AppClassLoader@42a57993 
+Loaded from file:/C:/GithubClone/Scrum-eXtremeProgramming-Projekt/GRUPP15/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_111-b14
-user.dir=C:\Users\AdaM\Desktop\projekt\Scrum-eXtremeProgramming-Projekt\GRUPP15
+user.dir=C:\GithubClone\Scrum-eXtremeProgramming-Projekt\GRUPP15
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
