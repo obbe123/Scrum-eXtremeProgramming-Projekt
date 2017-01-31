@@ -31,10 +31,10 @@ public class HemGUI extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         lblDatum.setText("Startsida - Dagens datum är: " + cal.getTime().toString());
         uppdateraDatum();
-        setIngressText(1, txtPnlInlagg1);
-                setIngressText(2, txtPnlInlagg2);
-                        setIngressText(3, txtPnlInlagg3);
-                                                setIngressText(4, txtPnlInlagg4);
+        setIngressText(1, txtPnlInlagg1, 0);
+                setIngressText(2, txtPnlInlagg2, 1);
+                        setIngressText(3, txtPnlInlagg3, 2);
+                                                setIngressText(4, txtPnlInlagg4, 3);
     }
 
     /**
@@ -336,10 +336,15 @@ public class HemGUI extends javax.swing.JFrame {
         new Timer(1000, uppgift).start();
     }
 
-    public void setIngressText(int tick, JTextPane txtPanel) {
+    public void setIngressText(int tick, JTextPane txtPanel, int tickDown) {
         int i = 0;
+        int idKoll = 0;
         try {
-            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG");
+            ResultSet id = Database.sqlSelect("SELECT MAX(INLAGGID) FROM INLAGG");
+            if (id.next()) {
+            idKoll = id.getInt(1) - tickDown;
+            }
+            ResultSet inlagg = Database.sqlSelect("SELECT * FROM INLAGG WHERE INLAGGID = " + idKoll);
             while (inlagg.next() && i < tick) {
 
                 String rubrik = inlagg.getString("RUBRIK");
