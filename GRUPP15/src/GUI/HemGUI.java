@@ -71,7 +71,7 @@ public class HemGUI extends javax.swing.JFrame {
         utbStartBtn = new javax.swing.JButton();
         utbDiskuBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
@@ -319,6 +319,7 @@ public class HemGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
