@@ -28,8 +28,6 @@ public class KalenderGUI extends javax.swing.JFrame {
         initComponents();
         this.inloggadPerson = inloggadPerson;
         Calendar cal = Calendar.getInstance();
-        lblDatum.setText("Dagens datum är: " + cal.getTime().toString());
-        uppdateraDatum();
         
     }
 
@@ -43,16 +41,6 @@ public class KalenderGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlMain = new javax.swing.JPanel();
-        pnlMeny = new javax.swing.JPanel();
-        btnHem = new javax.swing.JButton();
-        btnUtbildning = new javax.swing.JButton();
-        btnForskning = new javax.swing.JButton();
-        btnProfil = new javax.swing.JButton();
-        lblDatum = new javax.swing.JLabel();
-        pnlMeny2 = new javax.swing.JPanel();
-        btnStartsida = new javax.swing.JButton();
-        btnSkapaInlagg = new javax.swing.JButton();
-        btnExit = new javax.swing.JButton();
         pnlTextArea = new javax.swing.JPanel();
         pnlKalender = new javax.swing.JPanel();
         dateChooserPnl = new datechooser.beans.DateChooserPanel();
@@ -76,112 +64,16 @@ public class KalenderGUI extends javax.swing.JFrame {
         lblValdaPersoner = new javax.swing.JLabel();
         scrlPnlValdPerson = new javax.swing.JScrollPane();
         jListValdPerson = new javax.swing.JList<>();
+        txtFieldMotesPlats = new javax.swing.JTextField();
+        lblMotesPlats = new javax.swing.JLabel();
+        pnlMeny2 = new javax.swing.JPanel();
+        btnExit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
 
         pnlMain.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnHem.setBackground(new java.awt.Color(255, 255, 255));
-        btnHem.setText("Hem");
-
-        btnUtbildning.setBackground(new java.awt.Color(255, 255, 255));
-        btnUtbildning.setText("Utbildning");
-
-        btnForskning.setBackground(new java.awt.Color(255, 255, 255));
-        btnForskning.setText("Forskning");
-        btnForskning.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnForskningActionPerformed(evt);
-            }
-        });
-
-        btnProfil.setBackground(new java.awt.Color(255, 255, 255));
-        btnProfil.setText("Profil");
-        btnProfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProfilActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlMenyLayout = new javax.swing.GroupLayout(pnlMeny);
-        pnlMeny.setLayout(pnlMenyLayout);
-        pnlMenyLayout.setHorizontalGroup(
-            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenyLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnHem, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnUtbildning, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnForskning, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlMenyLayout.setVerticalGroup(
-            pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMenyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlMenyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProfil)
-                    .addComponent(btnForskning)
-                    .addComponent(btnUtbildning)
-                    .addComponent(btnHem)
-                    .addComponent(lblDatum))
-                .addContainerGap())
-        );
-
-        btnStartsida.setBackground(new java.awt.Color(255, 255, 255));
-        btnStartsida.setText("Startsida");
-        btnStartsida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartsidaActionPerformed(evt);
-            }
-        });
-
-        btnSkapaInlagg.setBackground(new java.awt.Color(255, 255, 255));
-        btnSkapaInlagg.setText("Skapa inlägg");
-        btnSkapaInlagg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSkapaInlaggActionPerformed(evt);
-            }
-        });
-
-        btnExit.setBackground(new java.awt.Color(255, 255, 255));
-        btnExit.setText("Tillbaka");
-        btnExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlMeny2Layout = new javax.swing.GroupLayout(pnlMeny2);
-        pnlMeny2.setLayout(pnlMeny2Layout);
-        pnlMeny2Layout.setHorizontalGroup(
-            pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeny2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSkapaInlagg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStartsida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        pnlMeny2Layout.setVerticalGroup(
-            pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMeny2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnStartsida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSkapaInlagg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExit)
-                .addContainerGap())
-        );
 
         pnlTextArea.setLayout(new java.awt.CardLayout());
 
@@ -241,11 +133,13 @@ public class KalenderGUI extends javax.swing.JFrame {
     pnlKalender.setLayout(pnlKalenderLayout);
     pnlKalenderLayout.setHorizontalGroup(
         pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(dateChooserPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+        .addComponent(dateChooserPnl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
     );
     pnlKalenderLayout.setVerticalGroup(
         pnlKalenderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addComponent(dateChooserPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlKalenderLayout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(dateChooserPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE))
     );
 
     pnlTextArea.add(pnlKalender, "pnlKalender");
@@ -263,8 +157,10 @@ public class KalenderGUI extends javax.swing.JFrame {
     txtAreaBeskrivning.setRows(5);
     scrlPnlBeskrivning.setViewportView(txtAreaBeskrivning);
 
+    lblValjTid.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     lblValjTid.setText("Välj tid för mötet");
 
+    lblValjPerson.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     lblValjPerson.setText("Bjud in deltagare");
 
     jListTidFran.setModel(new javax.swing.AbstractListModel<String>() {
@@ -274,8 +170,10 @@ public class KalenderGUI extends javax.swing.JFrame {
     });
     scrlPnlTidFran.setViewportView(jListTidFran);
 
+    lblFran.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
     lblFran.setText("Från");
 
+    lblTill.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
     lblTill.setText("Till");
 
     jListValjPerson.setModel(new javax.swing.DefaultListModel<String>()
@@ -292,8 +190,14 @@ public class KalenderGUI extends javax.swing.JFrame {
     });
     scrlPnlValjPerson.setViewportView(jListValjPerson);
 
-    lblBeskrivningOchMotesplats.setText("Beskrivning och mötesplats");
+    lblValtDatum.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
+    lblDatumet.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+    lblBeskrivningOchMotesplats.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    lblBeskrivningOchMotesplats.setText("Beskrivning för mötet");
+
+    lblValdaPersoner.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
     lblValdaPersoner.setText("Valda deltagare");
 
     jListValdPerson.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -303,96 +207,116 @@ public class KalenderGUI extends javax.swing.JFrame {
     });
     scrlPnlValdPerson.setViewportView(jListValdPerson);
 
+    lblMotesPlats.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+    lblMotesPlats.setText("Mötesplats");
+
     javax.swing.GroupLayout pnlBokaMoteLayout = new javax.swing.GroupLayout(pnlBokaMote);
     pnlBokaMote.setLayout(pnlBokaMoteLayout);
     pnlBokaMoteLayout.setHorizontalGroup(
         pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pnlBokaMoteLayout.createSequentialGroup()
+            .addGap(69, 69, 69)
+            .addComponent(lblValjTid)
+            .addGap(171, 171, 171)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlBokaMoteLayout.createSequentialGroup()
+                    .addComponent(lblValtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblValdaPersoner)
+                .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scrlPnlValdPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblMotesPlats)
+                        .addComponent(scrlPnlBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFieldMotesPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(lblBeskrivningOchMotesplats))
+            .addContainerGap(62, Short.MAX_VALUE))
+        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
             .addContainerGap()
             .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(scrlPnlValjPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(lblValjPerson)
                 .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblValjTid)
-                        .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
+                            .addComponent(lblFran)
+                            .addGap(119, 119, 119)
+                            .addComponent(lblTill))
+                        .addComponent(scrlPnlValjPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
                             .addComponent(scrlPnlTidFran, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblFran)))
-                    .addGap(18, 18, 18)
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(scrlPnlTidTill, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblTill))))
-            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBokaMoteLayout.createSequentialGroup()
-                    .addGap(3, 3, 3)
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                            .addComponent(lblValdaPersoner)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                            .addComponent(scrlPnlValdPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(78, 78, 78)
-                            .addComponent(btnBokaMote)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBokaMoteLayout.createSequentialGroup()
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBokaMoteLayout.createSequentialGroup()
-                            .addGap(214, 214, 214)
-                            .addComponent(lblBeskrivningOchMotesplats))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBokaMoteLayout.createSequentialGroup()
-                            .addGap(29, 29, 29)
-                            .addComponent(lblDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap())
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlBokaMoteLayout.createSequentialGroup()
-                    .addGap(183, 183, 183)
-                    .addComponent(scrlPnlBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 28, Short.MAX_VALUE))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(scrlPnlTidTill, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlBokaMoteLayout.createSequentialGroup()
+                    .addComponent(lblValjPerson)
+                    .addGap(0, 0, Short.MAX_VALUE))))
         .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-            .addGap(302, 302, 302)
-            .addComponent(lblValtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(254, 254, 254)
+            .addComponent(btnBokaMote)
+            .addGap(0, 0, Short.MAX_VALUE))
     );
     pnlBokaMoteLayout.setVerticalGroup(
         pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addContainerGap(18, Short.MAX_VALUE)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblValtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblValjTid)
+                .addComponent(lblDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblBeskrivningOchMotesplats)
+                .addComponent(lblTill)
+                .addComponent(lblFran))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                            .addComponent(lblValtDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(9, 9, 9))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBokaMoteLayout.createSequentialGroup()
-                            .addComponent(lblValjTid)
-                            .addGap(25, 25, 25)))
-                    .addComponent(lblBeskrivningOchMotesplats)
+                    .addComponent(scrlPnlBeskrivning, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(scrlPnlBeskrivning, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
-                .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTill)
-                        .addComponent(lblFran))
+                    .addComponent(lblMotesPlats)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(scrlPnlTidTill, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                        .addComponent(scrlPnlTidFran))))
-            .addGap(16, 16, 16)
-            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addGroup(pnlBokaMoteLayout.createSequentialGroup()
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblValdaPersoner)
-                        .addComponent(lblValjPerson))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(scrlPnlValjPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(scrlPnlValdPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(btnBokaMote))
-            .addGap(19, 19, 19))
+                    .addComponent(txtFieldMotesPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scrlPnlTidTill, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrlPnlTidFran, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGap(18, 18, 18)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblValjPerson)
+                .addComponent(lblValdaPersoner))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(pnlBokaMoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(scrlPnlValjPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrlPnlValdPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnBokaMote)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
 
     pnlTextArea.add(pnlBokaMote, "pnlBokaMote");
+
+    btnExit.setBackground(new java.awt.Color(255, 255, 255));
+    btnExit.setText("Tillbaka");
+    btnExit.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btnExitActionPerformed(evt);
+        }
+    });
+
+    javax.swing.GroupLayout pnlMeny2Layout = new javax.swing.GroupLayout(pnlMeny2);
+    pnlMeny2.setLayout(pnlMeny2Layout);
+    pnlMeny2Layout.setHorizontalGroup(
+        pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(pnlMeny2Layout.createSequentialGroup()
+            .addContainerGap()
+            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+            .addContainerGap())
+    );
+    pnlMeny2Layout.setVerticalGroup(
+        pnlMeny2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        .addGroup(pnlMeny2Layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnExit)
+            .addContainerGap())
+    );
 
     javax.swing.GroupLayout pnlMainLayout = new javax.swing.GroupLayout(pnlMain);
     pnlMain.setLayout(pnlMainLayout);
@@ -400,23 +324,19 @@ public class KalenderGUI extends javax.swing.JFrame {
         pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMainLayout.createSequentialGroup()
             .addContainerGap()
-            .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(pnlMeny, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlMainLayout.createSequentialGroup()
-                    .addComponent(pnlMeny2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(pnlTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+            .addComponent(pnlMeny2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addComponent(pnlTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addContainerGap())
     );
     pnlMainLayout.setVerticalGroup(
         pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(pnlMainLayout.createSequentialGroup()
-            .addContainerGap()
-            .addComponent(pnlMeny, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(pnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlMeny2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pnlTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlTextArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlMainLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlMeny2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addContainerGap())
     );
 
@@ -443,41 +363,8 @@ public class KalenderGUI extends javax.swing.JFrame {
         txtAreaBeskrivning.setText("");
         jListTidFran.clearSelection();
         jListTidTill.clearSelection();
+        txtFieldMotesPlats.setText("");
     }//GEN-LAST:event_btnExitActionPerformed
-
-    private void btnSkapaInlaggActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSkapaInlaggActionPerformed
-        InlaggGUI inlagg = new InlaggGUI(inloggadPerson);
-        inlagg.setVisible(true);
-    }//GEN-LAST:event_btnSkapaInlaggActionPerformed
-
-    private void btnStartsidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartsidaActionPerformed
-
-    }//GEN-LAST:event_btnStartsidaActionPerformed
-
-    private void btnProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfilActionPerformed
-        
-        ProfilGUI pGUI = new ProfilGUI(inloggadPerson);
-        pGUI.setVisible(true);
-
-        //        try {
-        //            Connection con = Database.getDB();
-        //            Statement stmt = con.createStatement();
-        //            String sql = "SELECT * FROM namn";
-        //            ResultSet rs = stmt.executeQuery(sql);
-        //            String p = "";
-        //
-        //            while (rs.next()) {
-        //                p = p + "ID: " + rs.getInt("ID") + " - Namn: " + rs.getString("fornamn") + " " + rs.getString("efternamn") + "\n";
-        //                jTextArea1.setText(p);
-        //            }
-        //        } catch (SQLException error) {
-        //            System.out.println(error.getMessage());
-        //        }
-    }//GEN-LAST:event_btnProfilActionPerformed
-
-    private void btnForskningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnForskningActionPerformed
-
-    }//GEN-LAST:event_btnForskningActionPerformed
 
     private void dateChooserPnlOnSelectionChange(datechooser.events.SelectionChangedEvent evt) {//GEN-FIRST:event_dateChooserPnlOnSelectionChange
         getLayout("pnlBokaMote");
@@ -498,9 +385,35 @@ public class KalenderGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_dateChooserPnlOnSelectionChange
 
-    private void jListValjPersonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jListValjPersonFocusGained
+    private void jListValdPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListValdPersonMouseClicked
+        DefaultListModel listModelRight = new DefaultListModel();
+        DefaultListModel listModelLeft = new DefaultListModel();
+        int i = jListValjPerson.getModel().getSize();
+        int o = jListValdPerson.getModel().getSize();
+        int taBort = jListValdPerson.getSelectedIndex();
+        if (jListValdPerson.isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(null, "Det finns inga mer personer att ta bort.");
+        }
+        else {
+            for (int a = 0; a < i; a++) {
+                jListValjPerson.setSelectedIndex(a);
+                String extraNamnRight = jListValjPerson.getSelectedValue();
+                listModelRight.addElement(extraNamnRight);
 
-    }//GEN-LAST:event_jListValjPersonFocusGained
+            }
+            String namn = jListValdPerson.getSelectedValue();
+            listModelRight.addElement(namn);
+            jListValjPerson.setModel(listModelRight);
+            for (int a = 0; a < o; a++) {
+                jListValdPerson.setSelectedIndex(a);
+                String extraNamnLeft = jListValdPerson.getSelectedValue();
+                listModelLeft.addElement(extraNamnLeft);
+            }
+
+            listModelLeft.removeElementAt(taBort);
+            jListValdPerson.setModel(listModelLeft);
+        }
+    }//GEN-LAST:event_jListValdPersonMouseClicked
 
     private void jListValjPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListValjPersonMouseClicked
         DefaultListModel listModelRight = new DefaultListModel();
@@ -512,68 +425,30 @@ public class KalenderGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Det finns inga mer personer att lägga till");
         }
         else {
-        for (int a = 0; a < i; a++) {
-            jListValdPerson.setSelectedIndex(a);
-            String extraNamnRight = jListValdPerson.getSelectedValue();
-            listModelRight.addElement(extraNamnRight);
-            
-        }
-        String namn = jListValjPerson.getSelectedValue();
-        listModelRight.addElement(namn);
-        jListValdPerson.setModel(listModelRight);
-        for (int a = 0; a < o; a++) {
-            jListValjPerson.setSelectedIndex(a);
-            String extraNamnLeft = jListValjPerson.getSelectedValue();
-            listModelLeft.addElement(extraNamnLeft);
-        }
+            for (int a = 0; a < i; a++) {
+                jListValdPerson.setSelectedIndex(a);
+                String extraNamnRight = jListValdPerson.getSelectedValue();
+                listModelRight.addElement(extraNamnRight);
 
+            }
+            String namn = jListValjPerson.getSelectedValue();
+            listModelRight.addElement(namn);
+            jListValdPerson.setModel(listModelRight);
+            for (int a = 0; a < o; a++) {
+                jListValjPerson.setSelectedIndex(a);
+                String extraNamnLeft = jListValjPerson.getSelectedValue();
+                listModelLeft.addElement(extraNamnLeft);
+            }
 
-        listModelLeft.removeElementAt(taBort);
-        jListValjPerson.setModel(listModelLeft);
-        
+            listModelLeft.removeElementAt(taBort);
+            jListValjPerson.setModel(listModelLeft);
+
         }
     }//GEN-LAST:event_jListValjPersonMouseClicked
 
-    private void jListValdPersonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListValdPersonMouseClicked
-        DefaultListModel listModelRight = new DefaultListModel();
-        DefaultListModel listModelLeft = new DefaultListModel();
-        int i = jListValjPerson.getModel().getSize();
-        int o = jListValdPerson.getModel().getSize();
-        int taBort = jListValdPerson.getSelectedIndex();
-        if (jListValdPerson.isSelectionEmpty()) {
-            JOptionPane.showMessageDialog(null, "Det finns inga mer personer att ta bort.");
-        }
-        else {
-        for (int a = 0; a < i; a++) {
-            jListValjPerson.setSelectedIndex(a);
-            String extraNamnRight = jListValjPerson.getSelectedValue();
-            listModelRight.addElement(extraNamnRight);
-            
-        }
-        String namn = jListValdPerson.getSelectedValue();
-        listModelRight.addElement(namn);
-        jListValjPerson.setModel(listModelRight);
-        for (int a = 0; a < o; a++) {
-            jListValdPerson.setSelectedIndex(a);
-            String extraNamnLeft = jListValdPerson.getSelectedValue();
-            listModelLeft.addElement(extraNamnLeft);
-        }
+    private void jListValjPersonFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jListValjPersonFocusGained
 
-
-        listModelLeft.removeElementAt(taBort);
-        jListValdPerson.setModel(listModelLeft);
-        }
-    }//GEN-LAST:event_jListValdPersonMouseClicked
-    public void uppdateraDatum() {
-        ActionListener uppgift = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                Calendar cal = Calendar.getInstance();
-                lblDatum.setText("Visar: Startsida - Dagens datum är: " + cal.getTime().toString());
-                
-            }
-        };
-        new Timer(1000, uppgift).start();
-    }
+    }//GEN-LAST:event_jListValjPersonFocusGained
 
     public void getLayout(String panelName) {//Denna metods jobb är att initialisera, och visa olika containers beroende på vilken funktion/knapp som användaren vill utnyttja.
         //Metoden tar endast emot containerns/panelens namn - och visar den.
@@ -589,21 +464,15 @@ public class KalenderGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBokaMote;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnForskning;
-    private javax.swing.JButton btnHem;
-    private javax.swing.JButton btnProfil;
-    private javax.swing.JButton btnSkapaInlagg;
-    private javax.swing.JButton btnStartsida;
-    private javax.swing.JButton btnUtbildning;
     private datechooser.beans.DateChooserPanel dateChooserPnl;
     private javax.swing.JList<String> jListTidFran;
     private javax.swing.JList<String> jListTidTill;
     private javax.swing.JList<String> jListValdPerson;
     private javax.swing.JList<String> jListValjPerson;
     private javax.swing.JLabel lblBeskrivningOchMotesplats;
-    private javax.swing.JLabel lblDatum;
     private javax.swing.JLabel lblDatumet;
     private javax.swing.JLabel lblFran;
+    private javax.swing.JLabel lblMotesPlats;
     private javax.swing.JLabel lblTill;
     private javax.swing.JLabel lblValdaPersoner;
     private javax.swing.JLabel lblValjPerson;
@@ -612,7 +481,6 @@ public class KalenderGUI extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBokaMote;
     private javax.swing.JPanel pnlKalender;
     private javax.swing.JPanel pnlMain;
-    private javax.swing.JPanel pnlMeny;
     private javax.swing.JPanel pnlMeny2;
     private javax.swing.JPanel pnlTextArea;
     private javax.swing.JScrollPane scrlPnlBeskrivning;
@@ -621,5 +489,6 @@ public class KalenderGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrlPnlValdPerson;
     private javax.swing.JScrollPane scrlPnlValjPerson;
     private javax.swing.JTextArea txtAreaBeskrivning;
+    private javax.swing.JTextField txtFieldMotesPlats;
     // End of variables declaration//GEN-END:variables
 }
