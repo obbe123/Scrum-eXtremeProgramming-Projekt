@@ -59,7 +59,6 @@ public class HemGUI extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         mainInfoPnl = new javax.swing.JPanel();
         hemInfoPnl = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
         utbStartPnl = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         utbDiskuPnl = new javax.swing.JPanel();
@@ -116,6 +115,11 @@ public class HemGUI extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Kalender");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMenyLayout = new javax.swing.GroupLayout(pnlMeny);
         pnlMeny.setLayout(pnlMenyLayout);
@@ -157,23 +161,15 @@ public class HemGUI extends javax.swing.JFrame {
 
         hemInfoPnl.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField3.setText("Hemsidan");
-
         javax.swing.GroupLayout hemInfoPnlLayout = new javax.swing.GroupLayout(hemInfoPnl);
         hemInfoPnl.setLayout(hemInfoPnlLayout);
         hemInfoPnlLayout.setHorizontalGroup(
             hemInfoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hemInfoPnlLayout.createSequentialGroup()
-                .addGap(283, 283, 283)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
+            .addGap(0, 684, Short.MAX_VALUE)
         );
         hemInfoPnlLayout.setVerticalGroup(
             hemInfoPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hemInfoPnlLayout.createSequentialGroup()
-                .addContainerGap(179, Short.MAX_VALUE)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+            .addGap(0, 372, Short.MAX_VALUE)
         );
 
         mainInfoPnl.add(hemInfoPnl, "mainHemCard");
@@ -376,6 +372,12 @@ public class HemGUI extends javax.swing.JFrame {
     private void utbDiskuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utbDiskuBtnActionPerformed
         changeCard(mainInfoPnl, "diskUtbCard");
     }//GEN-LAST:event_utbDiskuBtnActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        KalenderGUI kalender = new KalenderGUI();
+        kalender.setVisible(true);
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
     private void changeCard(JPanel rootpanel, String kort) {
         CardLayout card = (CardLayout) rootpanel.getLayout();
         card.show(rootpanel, kort);
@@ -429,7 +431,6 @@ public class HemGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblDatum;
     private javax.swing.JPanel mainDirPnl;
     private javax.swing.JPanel mainInfoPnl;
